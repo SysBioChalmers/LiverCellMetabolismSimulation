@@ -1,0 +1,140 @@
+Name	Time	Concentration	STD
+Alanine	0	102	0
+Alanine	23.25	277	0
+Alanine	47.5	546	0
+Alanine	78.25	186	0
+Alanine	143.75	4	0
+Arginine	0	330	0
+Arginine	23.25	260	0
+Arginine	47.5	169	0
+Arginine	78.25	22	0
+Arginine	143.75	9	0
+Asparagine	0	0	0
+Asparagine	23.25	1	0
+Asparagine	47.5	1	0
+Asparagine	78.25	1	0
+Asparagine	143.75	20	0
+Aspartic acid	0	13	0
+Aspartic acid	23.25	21	0
+Aspartic acid	47.5	27	0
+Aspartic acid	78.25	22	0
+Aspartic acid	143.75	22	0
+Cystine	0	160	0
+Cystine	23.25	88	0
+Cystine	47.5	25	0
+Cystine	78.25	2	0
+Cystine	143.75	3	0
+Glucose	0	6362.4	370.0860848
+Glucose	6.5	5789.784	99.09394264
+Glucose	23.5	4618.042	222.995986
+Glucose	30.5	3210.12	733.1240862
+Glucose	47.75	197.92125	146.238802
+Glucose	54.25	189.185	0
+Glucose	71.25	172.9175	0
+Glucose	143.75	156.65	0
+Glutamic acid	0	89	0
+Glutamic acid	23.25	219	0
+Glutamic acid	47.5	392	0
+Glutamic acid	78.25	594	0
+Glutamic acid	143.75	340	0
+Glutamine	0	1711	0
+Glutamine	23.25	921	0
+Glutamine	47.5	216	0
+Glutamine	78.25	28	0
+Glutamine	143.75	1	0
+Glycine	0	394	0
+Glycine	23.25	397	0
+Glycine	47.5	442	0
+Glycine	78.25	534	0
+Glycine	143.75	1228	0
+Histidine	0	177	0
+Histidine	23.25	151	0
+Histidine	47.5	129	0
+Histidine	78.25	85	0
+Histidine	143.75	93	0
+Iso-leucine	0	698	0
+Iso-leucine	23.25	487	0
+Iso-leucine	47.5	360	0
+Iso-leucine	78.25	122	0
+Iso-leucine	143.75	7	0
+Lactate	0	1388.22425	158.2895632
+Lactate	6.5	1863.458894	45.69504898
+Lactate	23.5	3357.962174	179.1299997
+Lactate	30.5	4910.455154	130.6167081
+Lactate	47.75	8723.502277	526.2418215
+Lactate	54.25	8251.253153	252.9138806
+Lactate	71.25	5932.128384	207.0004438
+Lactate	143.75	32.848453	0
+Leucine	0	674	0
+Leucine	23.25	472	0
+Leucine	47.5	320	0
+Leucine	78.25	86	0
+Leucine	143.75	5	0
+Lysine	0	690	0
+Lysine	23.25	593	0
+Lysine	47.5	518	0
+Lysine	78.25	254	0
+Lysine	143.75	124	0
+Methionine	0	150	0
+Methionine	23.25	125	0
+Methionine	47.5	97	0
+Methionine	78.25	46	0
+Methionine	143.75	23	0
+Ornithine	0	20	0
+Ornithine	23.25	33	0
+Ornithine	47.5	54	0
+Ornithine	78.25	52	0
+Ornithine	143.75	12	0
+Phenylalanine	0	362	0
+Phenylalanine	23.25	296	0
+Phenylalanine	47.5	207	0
+Phenylalanine	78.25	13	0
+Phenylalanine	143.75	22	0
+Serine	0	378	0
+Serine	23.25	269	0
+Serine	47.5	208	0
+Serine	78.25	237	0
+Serine	143.75	45	0
+Taurine	0	10	0
+Taurine	23.25	9	0
+Taurine	47.5	7	0
+Taurine	78.25	3	0
+Taurine	143.75	22	0
+Threonine	0	728	0
+Threonine	23.25	644	0
+Threonine	47.5	605	0
+Threonine	78.25	493	0
+Threonine	143.75	529	0
+Tyrosine	0	341	0
+Tyrosine	23.25	317	0
+Tyrosine	47.5	343	0
+Tyrosine	78.25	362	0
+Tyrosine	143.75	278	0
+Valine	0	683	0
+Valine	23.25	547	0
+Valine	47.5	431	0
+Valine	78.25	174	0
+Valine	143.75	13	0
+Tryptophan	0	70	0
+Amonia	0	0	0
+Amonia	7	190	0
+Amonia	23	700	0
+Amonia	48	900	0
+Amonia	140	900	0
+Urea	0	0	0
+Pyroglutamate	0	0	0
+Pyruvate	0	89.17	7.993065745
+Pyruvate	6.5	435.246	20.08052147
+Pyruvate	23.25	833.378	82.67915877
+Pyruvate	30.25	926.0425	212.1587212
+Pyruvate	47.5	1157.4025	131.7864599
+Pyruvate	54.25	797.71	183.3145236
+Pyruvate	71.5	747.1	15.33714608
+Albumin	0	1	0
+Phosphate	0	815	0
+Choline	0	28.6
+Niacinamide	0	32.8
+Pantothenate	0	8.4
+Folate	0	9.1
+Riboflavin	0	1.1
+Sulfate	0	814

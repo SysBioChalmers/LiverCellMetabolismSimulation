@@ -1,0 +1,110 @@
+halfLife = importdata('proteinHalflife.txt');
+abundance = importdata('abundanceData.txt');
+lengthMatrix = importdata('lengthMatrix.txt');
+lengthMatrix.id = lengthMatrix.textdata(:,1);
+lengthMatrix.lngth = sum(lengthMatrix.data,2);
+
+symbolMap = tdfread('symbol.txt');
+annotation = tdfread('annotation.txt');
+
+
+halfLifeId = halfLife.textdata(2:end,1);
+abundanceId = abundance.textdata(2:end,1);
+halfLifeVal = halfLife.data;
+abundanceVal = abundance.data;
+
+%remove zeroes
+abundanceId(abundanceVal==0) = [];
+abundanceVal(abundanceVal==0) = [];
+
+%add and remove duplicates
+for i = length(abundanceId):-1:1
+    duplicateMatches = find(ismember(abundanceId, abundanceId{i}));
+    duplicateMatches(end) = [];
+    if not(isempty(duplicateMatches))
+        abundanceVal(duplicateMatches(end)) = abundanceVal(duplicateMatches(end)) + abundanceVal(i);
+        abundanceVal(i) = [];
+        abundanceId(i) = [];
+    end    
+end
+
+%normalize abundance
+totalAbundance = sum(abundanceVal);
+abundanceVal = abundanceVal/totalAbundance;
+
+%Make maps
+abundanceMap = containers.Map(abundanceId,abundanceVal);
+lengthMap = containers.Map(lengthMatrix.id(2:end),lengthMatrix.lngth);
+symbolMap = containers.Map(cellstr(symbolMap.Uniprot_ID), cellstr(symbolMap.Gene_Symbol));
+annotationMap = containers.Map(cellstr(annotation.Uniprot_ID), cellstr(annotation.Annotation));
+
+%Remove halflife with missing abundance
+halfLifeVal = halfLifeVal(ismember(halfLifeId, abundanceId));
+halfLifeId = halfLifeId(ismember(halfLifeId, abundanceId));
+
+totalMass = 0;
+for i = 1:length(abundanceId)
+    if isKey(lengthMap,abundanceId{i})
+        totalMass = totalMass + abundanceVal(i).*lengthMap(abundanceId{i});
+    end
+end
+
+%%
+set(gca,'DefaultTextFontSize',20)
+for i = 1:length(halfLifeId)
+    halfLifeAbudnance(i) = abundanceMap(halfLifeId{i});
+    halfLifeLengths(i) = lengthMap(halfLifeId{i});
+end
+massCoverage = sum(halfLifeAbudnance.*halfLifeLengths);
+massCoverage = massCoverage/totalMass;
+
+
+degradationRate = log(2)./halfLifeVal;
+
+
+
+synthesisRate = degradationRate' .* halfLifeAbudnance .* halfLifeLengths; %normalized amino acids/h
+totalSynthesis = sum(synthesisRate);
+
+[proteinCost, indx] = sort(synthesisRate, 2, 'descend');
+matchId = halfLifeId(indx);
+sortedDegradation = degradationRate(indx);
+
+costFraction = cumsum(proteinCost)/totalSynthesis;
+
+
+xVals = (1:length(costFraction))/length(costFraction);
+hold all
+plot(xVals, costFraction, '-', 'linewidth', 3)
+
+
+set(findall(gcf,'-property','FontSize'),'FontSize',15)
+ylim([0 1])
+xlabel('% proteome')
+ylabel('% cost')
+
+plot(xVals(1:geneToDisp), costFraction(1:geneToDisp), 'o', 'linewidth', 2)
+
+geneToDisp = 10;
+for i = 1:geneToDisp
+    symbol = symbolMap(matchId{i});
+    text(0.01*i, costFraction(1)+i*0.04, symbol, 'fontsize', 12)
+end
+
+fprintf('Rank\tUniprot\tCost\tDegrate\tAbundance\tLength\tSymbol\tAnnotation\n')
+
+for i = 1:length(matchId)
+    symbol = symbolMap(matchId{i});
+    dscrpt = annotationMap(matchId{i});
+    costPercent = 100*proteinCost(i)/totalSynthesis;
+    A = abundanceMap(matchId{i});
+    L = lengthMap(matchId{i});
+    D = sortedDegradation(i);
+    fprintf('%i\t%s\t%2.5f\t%2.5f\t%2.5f\t%2.5f\t%s\t%s\n', i, matchId{i}, costPercent, D, A, L, symbol, dscrpt)
+end
+
+
+
+coverage = sum(halfLifeAbudnance);
+agregatedProteinSynthesis = sum(synthesisRate)/coverage;
+

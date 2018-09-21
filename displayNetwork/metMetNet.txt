@@ -1,0 +1,205 @@
+(R)-methylmalonyl-CoA	propanoyl-CoA
+(R)-methylmalonyl-CoA	succinyl-CoA
+(R)-methylmalonyl-CoA	valine
+[ACP]	CTP
+[ACP]	DHAP
+[ACP]	malonyl-[ACP]
+[ACP]	CDP-diacylglycerol
+2-deoxy-D-ribose-1-phosphate	acetaldehyde
+2-deoxy-D-ribose-1-phosphate	adenine
+2-deoxy-D-ribose-1-phosphate	dAMP
+2-deoxy-D-ribose-1-phosphate	dGMP
+2-deoxy-D-ribose-1-phosphate	dUDP
+2-deoxy-D-ribose-1-phosphate	dUMP
+2-deoxy-D-ribose-1-phosphate	GAP
+2-deoxy-D-ribose-1-phosphate	GMP
+2-deoxy-D-ribose-1-phosphate	oxidized thioredoxin
+2-deoxy-D-ribose-1-phosphate	PRPP
+2-deoxy-D-ribose-1-phosphate	ribose-1-phosphate
+2-deoxy-D-ribose-1-phosphate	thioredoxin
+2-oxoadipate	acetoacetyl-CoA
+2-oxoadipate	alanine
+2-oxoadipate	formate
+2-oxoadipate	lysine
+2-oxoadipate	tryptophan
+4,4-dimethyl-14alpha-hydroxymethyl-5alpha-cholesta-8,24-dien-3beta-ol	cholesterol
+4,4-dimethyl-14alpha-hydroxymethyl-5alpha-cholesta-8,24-dien-3beta-ol	formate
+4,4-dimethyl-14alpha-hydroxymethyl-5alpha-cholesta-8,24-dien-3beta-ol	isopentenyl-pPP
+5,10-methenyl-THF	5,10-methylene-THF
+5,10-methenyl-THF	aspartate
+5,10-methenyl-THF	fumarate
+5,10-methenyl-THF	glycine
+5,10-methenyl-THF	histidine
+5,10-methenyl-THF	IMP
+5,10-methenyl-THF	PRPP
+5,10-methenyl-THF	THF
+5,10-methylene-THF	dTMP
+5,10-methylene-THF	dUMP
+5,10-methylene-THF	glycine
+5,10-methylene-THF	homocysteine
+5,10-methylene-THF	methionine
+5,10-methylene-THF	THF
+acetaldehyde	GAP
+acetaldehyde	glycine
+acetaldehyde	threonine
+acetoacetate	fumarate
+acetoacetate	HMG-CoA
+acetoacetate	tyrosine
+acetoacetyl-CoA	HMG-CoA
+adenine	adenosine
+adenine	dAMP
+adenine	PRPP
+adenine	ribose-1-phosphate
+adenosine	homocysteine
+adenosine	ribose-1-phosphate
+adenosine	SAH
+alanine	formate
+alanine	glycine
+alanine	glycolate
+alanine	glyoxalate
+alanine	tryptophan
+arginine	ornithine
+arginine	urea
+asparagine	aspartate
+aspartate	fumarate
+aspartate	glycine
+aspartate	OAA
+aspartate	PEP
+aspartate	PRPP
+aspartate	THF
+aspartate	UMP
+CDP	CMP
+CDP	CTP
+CDP	dCMP
+CDP	oxidized thioredoxin
+CDP	PEP
+CDP	thioredoxin
+CDP	UDP
+CDP	UTP
+cholesterol	formate
+citrate	isocitrate
+citrate	malate
+citrate	OAA
+CMP	CTP
+CMP	PE-LD pool
+CMP	PS-LD pool
+CMP	SAH
+CMP	SAM
+CMP	CDP-diacylglycerol
+CMP	phosphatidylserine
+CMP	phosphatidylcholine
+CMP	phosphatidylethanolamine
+CTP	DHAP
+CTP	malonyl-[ACP]
+CTP	PEP
+CTP	UTP
+CTP	CDP-diacylglycerol
+cysteine	H2S
+cysteine	homocysteine
+cysteine	propanoyl-CoA
+dCMP	oxidized thioredoxin
+dCMP	thioredoxin
+dCMP	UDP
+dCMP	UTP
+dGMP	GMP
+dGMP	PRPP
+DHAP	D-xylulose-5-phosphate
+DHAP	fructose-6-phosphate
+DHAP	glycolate
+DHAP	malonyl-[ACP]
+DHAP	UDP
+DHAP	UTP
+DHAP	CDP-diacylglycerol
+dTMP	dUMP
+dTMP	THF
+dUDP	dUMP
+dUDP	oxidized thioredoxin
+dUDP	ribose-1-phosphate
+dUDP	thioredoxin
+dUDP	UDP
+dUMP	oxidized thioredoxin
+dUMP	ribose-1-phosphate
+dUMP	THF
+dUMP	thioredoxin
+D-xylulose-5-phosphate	fructose-6-phosphate
+D-xylulose-5-phosphate	GAP
+D-xylulose-5-phosphate	glycolate
+D-xylulose-5-phosphate	ribose-5-phosphate
+formate	tryptophan
+fructose-6-phosphate	GAP
+fructose-6-phosphate	glucose
+fructose-6-phosphate	ribose-5-phosphate
+fructose-6-phosphate	UDP
+fructose-6-phosphate	UTP
+fumarate	glycine
+fumarate	malate
+fumarate	PEP
+fumarate	PRPP
+fumarate	THF
+fumarate	tyrosine
+GAP	PEP
+GAP	ribose-5-phosphate
+GAP	UDP
+GAP	UTP
+glycine	glyoxalate
+glycine	IMP
+glycine	PRPP
+glycine	THF
+glycine	threonine
+glycolate	glyoxalate
+GMP	IMP
+GMP	PRPP
+histidine	THF
+HMG-CoA	isopentenyl-pPP
+HMG-CoA	leucine
+homocysteine	methionine
+homocysteine	propanoyl-CoA
+homocysteine	SAH
+homocysteine	THF
+IMP	PEP
+IMP	PRPP
+IMP	THF
+isoleucine	propanoyl-CoA
+L-glutamate 5-semialdehyde	ornithine
+L-glutamate 5-semialdehyde	proline
+malate	OAA
+malate	succinyl-CoA
+malonyl-[ACP]	CDP-diacylglycerol
+methionine	SAM
+methionine	THF
+ornithine	urea
+oxidized thioredoxin	ribose-1-phosphate
+oxidized thioredoxin	thioredoxin
+oxidized thioredoxin	UDP
+oxidized thioredoxin	UTP
+PE-LD pool	PS-LD pool
+PE-LD pool	SAH
+PE-LD pool	SAM
+PE-LD pool	CDP-diacylglycerol
+PE-LD pool	phosphatidylcholine
+PE-LD pool	phosphatidylethanolamine
+PEP	UDP
+PEP	UTP
+phenylalanine	tyrosine
+PRPP	THF
+PRPP	UMP
+PS-LD pool	SAH
+PS-LD pool	SAM
+PS-LD pool	CDP-diacylglycerol
+PS-LD pool	phosphatidylcholine
+PS-LD pool	phosphatidylethanolamine
+ribose-1-phosphate	ribose-5-phosphate
+ribose-1-phosphate	thioredoxin
+SAH	SAM
+SAH	CDP-diacylglycerol
+SAH	phosphatidylcholine
+SAM	CDP-diacylglycerol
+SAM	phosphatidylcholine
+thioredoxin	UDP
+thioredoxin	UTP
+UDP	UMP
+UDP	UTP
+UMP	UTP
+CDP-diacylglycerol	phosphatidylserine
+CDP-diacylglycerol	phosphatidylcholine
+CDP-diacylglycerol	phosphatidylethanolamine

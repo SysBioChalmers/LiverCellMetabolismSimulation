@@ -1,0 +1,21 @@
+digraph G {
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0" width="200px">
+<tr><td align="left">A. alanine + D-xylulose-5-phosphate + H2O + NAD+ + NADP+ &rarr; DHAP + glycine + 2 H+ + NADH + NADPH + pyruvate</td></tr>
+<tr><td align="left">B. 6 ATP + H+ + 6 H2O + 3 methionine + PE-LD pool + serine + CDP-diacylglycerol &rarr; 3 ADP + 3 AMP + CMP + 3 homocysteine + 3 Pi + 3 PPi + PS-LD pool + phosphatidylcholine</td></tr>
+<tr><td align="left">C. GMP + thioredoxin &rarr; dGMP + H2O + oxidized thioredoxin</td></tr>
+<tr><td align="left">D. 2 5,10-methenyl-THF + aspartate + 4 ATP + CO2 + 2 glutamine + glycine + 3 H2O + PRPP &rarr; 4 ADP + fumarate + 2 glutamate + 2 H+ + IMP + 4 Pi + PPi + 2 THF</td></tr>
+<tr><td align="left">E. ATP + glutamine + 2 H2O + IMP + NAD+ &rarr; AMP + glutamate + GMP + H+ + NADH + PPi</td></tr>
+<tr><td align="left">F. aspartate + IMP + succinyl-CoA &rarr; AMP + CoA + fumarate + succinate</td></tr>
+<tr><td align="left">G. 5,10-methylene-THF + ADP + H+ + NADPH + thioredoxin + UDP &rarr; ATP + dTMP + H2O + NADP+ + oxidized thioredoxin + THF</td></tr>
+<tr><td align="left">H. H+ + NADPH + oxidized thioredoxin &rarr; NADP+ + thioredoxin</td></tr>
+<tr><td align="left">I. L-glutamate 5-semialdehyde + ubiquinol[m] &rarr; H2O + proline + ubiquinone[m]</td></tr>
+<tr><td align="left">J. ATP + glutamate + H+ + NADPH &rarr; ADP + L-glutamate 5-semialdehyde + NADP+ + Pi</td></tr>
+<tr><td align="left">K. H+ + 3 H2O + NAD+ + 2 NADPH + 3 O2 + tryptophan &rarr; 2-oxoadipate + alanine + CO2 + formate + NADH + 2 NADP+ + NH3</td></tr>
+<tr><td align="left">L. 2 acetyl-CoA + ATP + CTP + DHAP + 28 H+ + 14 malonyl-CoA + 28 NADPH + ubiquinol[m] &rarr; AMP + 14 CO2 + 16 CoA + 12 H2O + 28 NADP+ + 2 PPi + ubiquinone[m] + CDP-diacylglycerol</td></tr>
+<tr><td align="left">M. 18 ATP + 29 H+ + 6 HMG-CoA + NADH + 24 NADPH + 11 O2 &rarr; 18 ADP + cholesterol + 8 CO2 + 6 CoA + formate + 15 H2O + NAD+ + 24 NADP+ + 6 Pi + 6 PPi</td></tr>
+<tr><td align="left">N. PE-LD pool + serine + CDP-diacylglycerol &rarr; CMP + PS-LD pool + phosphatidylethanolamine</td></tr>
+<tr><td align="left">O. 0.3 dAMP + 0.2 dCMP + 0.2 dGMP + 0.3 dTMP &rarr; human_DNAPool</td></tr>
+<tr><td align="left">P. serine + CDP-diacylglycerol &rarr; CMP + phosphatidylserine</td></tr>
+<tr><td align="left">Q. 0.331 cholesterol + 0.384 phosphatidylPool &rarr; lipidPool</td></tr>
+</table>>, shape="box", style="setlinewidth(0)"];
+}

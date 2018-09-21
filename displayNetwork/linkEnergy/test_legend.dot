@@ -1,0 +1,18 @@
+digraph G {
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0" width="200px">
+<tr><td align="left">1 ATP + glucose &rarr; ADP + glucose-6-phosphate</td></tr>
+<tr><td align="left">2 alanine + D-xylulose-5-phosphate + H2O + NAD+ + NADP+ &rarr; DHAP + glycine + 2 H+ + NADH + NADPH + pyruvate</td></tr>
+<tr><td align="left">3 2 5,10-methenyl-THF + aspartate + 4 ATP + CO2 + 2 glutamine + glycine + 3 H2O + PRPP &rarr; 4 ADP + fumarate + 2 glutamate + 2 H+ + IMP + 4 Pi + PPi + 2 THF</td></tr>
+<tr><td align="left">4 ATP + glutamine + 2 H2O + IMP + NAD+ &rarr; AMP + glutamate + GMP + H+ + NADH + PPi</td></tr>
+<tr><td align="left">5 aspartate + 2 ATP + glutamine + H+ + HCO3- + PRPP + ubiquinone[m] &rarr; 2 ADP + CO2 + glutamate + 2 Pi + PPi + ubiquinol[m] + UMP</td></tr>
+<tr><td align="left">6 ATP + glutamine + H2O + UTP &rarr; ADP + CTP + glutamate + Pi</td></tr>
+<tr><td align="left">7 glutamate + OAA &rarr; AKG + aspartate</td></tr>
+<tr><td align="left">8 glutamine + H2O &rarr; glutamate + NH3</td></tr>
+<tr><td align="left">9 glutamate + pyruvate &rarr; AKG + alanine</td></tr>
+<tr><td align="left">10 aspartate + ATP + glutamine + H2O &rarr; AMP + asparagine + glutamate + PPi</td></tr>
+<tr><td align="left">11 glutamate + H+ + NADH &rarr; H2O + L-glutamate 5-semialdehyde + NAD+</td></tr>
+<tr><td align="left">12 3-phospho-D-glycerate + glutamate + H2O + NAD+ &rarr; AKG + H+ + NADH + Pi + serine</td></tr>
+<tr><td align="left">13 alanine &rarr; </td></tr>
+<tr><td align="left">14 glutamate &rarr; </td></tr>
+</table>>, shape="box", style="setlinewidth(0)"];
+}

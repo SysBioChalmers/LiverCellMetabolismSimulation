@@ -1,0 +1,21 @@
+Time	0	23.25	47.5	78.25	143.75
+Taurine	10	9	7	3	22
+Aspartic acid	13	21	27	22	22
+Threonine	728	644	605	493	529
+Serine	378	269	208	237	45
+Asparagine	0	1	1	1	20
+Glutamic acid	89	219	392	594	340
+Glutamine	1711	921	216	28	1
+Glycine	394	397	442	534	1228
+Alanine	102	277	546	186	4
+Valine	683	547	431	174	13
+Cystine	160	88	25	2	3
+Methionine	150	125	97	46	23
+Iso-leucine	698	487	360	122	7
+Leucine	674	472	320	86	5
+Tyrosine	341	317	343	362	278
+Phenylalanine	362	296	207	13	22
+Ornithine	20	33	54	52	12
+Lysine	690	593	518	254	124
+Histidine	177	151	129	85	93
+Arginine	330	260	169	22	9
