@@ -19,7 +19,7 @@ fluxes = curSol.x;
 %save('sensitivity analysis/sensitivityProfilesMaxFlux.mat','growthRates','reactionNumbers', 'simulationSteps')
 
 
-
+%%
 hold all
 %Displace the lines verticly at random by 1% to prevent overlapping lines
 randValues = 0.02 * rand(length(reactionNumbers), 1)-0.01; 
@@ -89,3 +89,16 @@ plot(xValues, normalizedGrowth(curRxn,:), 'linewidth', 3, 'color', colors(i,:))
 
 plot([0 1], [0,1], 'k--')
 legend boxoff
+
+%%
+rxnIds = model.rxns(reactionNumbers);
+xLabels = cellstr(num2str(round(xValues',2)));
+
+interestingRxns = 1:length(normalizedGrowth);
+nonLinearDecline = normalizedGrowth(:,3)>1.001*xValues(:,3);
+nonZeroDecline = normalizedGrowth(:,1)<0.9;
+interestingRxns = and(nonLinearDecline,nonZeroDecline);
+
+h = clustergram(normalizedGrowth(interestingRxns,:), 'Cluster', 'column', 'ColumnLabels', xLabels, 'RowLabels',rxnIds(interestingRxns), 'Colormap', 'redbluecmap')
+
+
