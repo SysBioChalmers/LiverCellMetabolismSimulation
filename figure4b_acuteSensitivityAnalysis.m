@@ -8,124 +8,17 @@ addpath('sensitivity analysis')
 model = setupBiomass(model, 150, 0.5);
 model = bindFBA(model, fluxMets, fluxValues(:,2)/1000);
 
-curSol = solveLinMin(model,1);
+curSol = solveLinMin(model);
 fluxes = curSol.x;
-growthTolerance = 0;
-tresh = 10^-6;
-
-%%%%%%%%%%%%%%%%%%%%
-%Relax upper bound for uptake reactions to allow sub maximal flux which may
-%be required to prevent linear pathways from beeing infeasible
-[rxn, id] = getExchangeRxns(model);
-for i = 1:length(id)
-    if model.lb(id(i)) < 0
-        model.ub(id(i)) = 1000;
-    end
-end
 
 
-%%%%%%%%%%%%%%%%%
-%Remove reactions that we are not interested in analyzing
-toAnalyse = abs(fluxes)>tresh; %only reactions with flux
 
-%Fix objective function 
-objRxn = find(model.c);
-model = setParam(model, 'lb', objRxn, fluxes(objRxn)*(1-growthTolerance));
-model = setParam(model, 'ub', objRxn, fluxes(objRxn));
+[normalizedGrowth, xValues, reactionNumbers] = ASA(model, fluxes, 10);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Find the obvious unconstrained candidates in parallell to save time
-%Minimize all affected fluxes
-model.c = zeros(length(fluxes),1);
-model.c(toAnalyse) = -1;
-curSol = solveLin(model,1);
-lowerBound = abs(curSol.x)>900;
 
-%Maximize all fluxes
-model.c = zeros(length(fluxes),1);
-model.c(toAnalyse) = 1;
-curSol = solveLin(model,1);
-upperBound = abs(curSol.x)>900;
+%save('sensitivity analysis/sensitivityProfilesMaxFlux.mat','growthRates','reactionNumbers', 'simulationSteps')
 
-toAnalyse(and(lowerBound, upperBound)) = false;
 
-%%%%%%%%%%%%%%%%
-%Prevent metabolic reorganization asside from utilized metabolic fluxes 
-%i.e. prevents adaptation of proteom.
-subMaxModel = true;
-if subMaxModel
-    exceptions = model.lb>0; %maintainance has a positive lower bond
-    exceptionVals = model.lb(exceptions);
-    
-    possitiveRxns = sign(fluxes)>0;
-    model.ub(possitiveRxns) = fluxes(possitiveRxns);
-    model.lb(possitiveRxns) = 0;
-    
-    %zero reacions
-    neutralRxns = sign(fluxes)==0;
-    model.ub(neutralRxns) = 0;
-    model.lb(neutralRxns) = 0;    
-    
-    negativeRxns = sign(fluxes)<0;
-    model.lb(negativeRxns) = fluxes(negativeRxns);
-    model.ub(negativeRxns) = 0;    
-    
-    model.lb(exceptions) = exceptionVals;
-    
-    %We should be able to relax exchange bonds as well
-    model.lb(id) = -1000;
-    model.ub(id) = 1000;
-end
-
-%Sensitivity analysis
-reactionNumbers = find(toAnalyse);
-model.c = zeros(length(fluxes),1);
-model.c(objRxn) = 1;
-model = setParam(model, 'lb', objRxn, 0);
-model = setParam(model, 'ub', objRxn, 1000);
-
-simulationSteps = linspace(0,1, 10);
-simulationSteps(end) = [];
-
-growthRates = zeros(length(reactionNumbers),length(simulationSteps));
-
-%Reference
-solution = solveLinMin(model,1);
-referenceAmounts = solution.x(reactionNumbers);
-referenceGrowth = -solution.f
-
-glucoseLactate = getBounds(model, {'glucose[s]', 'L-lactate[s]'});
-glucoseLactateratio = solution.x(glucoseLactate(2))/glucoseLactate(1);
-
-allUbs = model.ub;
-allLbs = model.lb;
-
-for i = 1:length(reactionNumbers)
-    i
-    curRxn = reactionNumbers(i);    
-    for j = 1:length(simulationSteps)
-        curAmount = referenceAmounts(i) * simulationSteps(j);
-        model = setParam(model, 'lb', curRxn, curAmount);
-        model = setParam(model, 'ub', curRxn, curAmount);
-%         if curRxn == glucoseLactate(1) %if glucose then reduce lactate as well
-%             model = setParam(model, 'lb', glucoseLactate(2), curAmount*glucoseLactateratio);
-%             model = setParam(model, 'ub', glucoseLactate(2), curAmount*glucoseLactateratio);      
-%         end
-        solution = solveLin(model,1);
-        growthRates(i,j) = -solution.f;
-    end
-    
-    %Reset bounds
-   model.ub = allUbs;
-   model.lb = allLbs;
-end
-
-save('sensitivity analysis/sensitivityProfilesMaxFlux.mat','growthRates','reactionNumbers', 'simulationSteps')
-
-normalizedGrowth = growthRates/referenceGrowth;
-%Obviously no restriction gives maximum growth
-normalizedGrowth = [normalizedGrowth ones(length(reactionNumbers),1)];
-xValues = [simulationSteps 1];
 
 hold all
 %Displace the lines verticly at random by 1% to prevent overlapping lines
