@@ -9,8 +9,8 @@ model = setupBiomass(model, 150, 0.5);
 
 
 
-celltype = 'huh7';
-condition = '0mm';
+celltype = 'hepg2';
+condition = '6mm';
 [expData, volumePoints, growthdat] = loadExpdata('data', celltype, condition);
 [fluxMets, fluxValues] = loadFluxes('fluxvalues', [celltype '-' condition '-.txt']);
 
@@ -33,7 +33,7 @@ haltCrit(findIndex(outputMets, '5-oxoproline[s]')) = -1000;
 haltCrit(findIndex(outputMets, 'NH3[s]')) = -1000;
 haltCrit(findIndex(outputMets, 'asparagine[s]')) = -1000; 
 haltCrit(findIndex(outputMets, 'aspartate[s]')) = -1000;
-
+%haltCrit(findIndex(outputMets, 'choline[s]')) = -1000;
 
 
 newFluxValues = fluxValues;
@@ -49,6 +49,7 @@ dict = {'glucose[s]', 'L-lactate[s]', 'pyruvate[s]', 'glutamine[s]', 'glutamate[
 %dict = { 'arginine[s]', 'asparagine[s]', 'aspartate[s]', 'taurine[s]', 'cystine[s]',  'glycine[s]', 'histidine[s]', 'isoleucine[s]', 'leucine[s]', 'lysine[s]', 'methionine[s]', 'phenylalanine[s]', 'serine[s]',  'threonine[s]', 'tyrosine[s]', 'valine[s]'};
 %dict = {'choline[s]', 'pantothenate[s]', 'folate[s]', 'nicotinamide[s]',  'riboflavin[s]'};
 %dict = {'taurine[s]'};
+dict = {'glucose[s]', 'L-lactate[s]', 'glutamine[s]', 'pyruvate[s]', 'glutamate[s]', 'alanine[s]'};
 
 plotResults(t, y, yconc, breakPoints, mu, expData, growthdat, dict)
 

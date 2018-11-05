@@ -4,10 +4,17 @@ breakPoints = [0;  breakPoints];
 breakPoints(end) = [];
 primColor = [0    0.4470    0.7410];
 secColor = [0.8500    0.3250    0.0980];
-breakColor = [0.85 0.85 0.85];
     
+fillColors = [199 227 187
+              232 208 190
+              190 209 223
+              233 233 233
+            ]/256;
+
     plotAbsolute = false;
-    tMax = max(t)*1.05;
+    tMax = max(t);
+    
+
     
     %remove datapoints outside of time range
     growthDat(growthDat(:,1)>tMax,:) = [];
@@ -21,10 +28,7 @@ breakColor = [0.85 0.85 0.85];
     maxVal = max((growthDat(:,2) +  growthDat(:,3)) * massPerCell);
     maxVal = max(maxVal, max(yAbs(:,1)));
     
-    
-    for i = 1:length(breakPoints)
-        plot([breakPoints(i) breakPoints(i)], [0 modelY(i)], '-','Color', breakColor);
-    end
+    plotBreakpoints(t, yAbs(:,1), breakPoints, fillColors)
 
     plot(t,yAbs(:,1), 'linewidth', 2, 'color', primColor, 'linewidth', 3);
     a1 = gca;
@@ -32,7 +36,14 @@ breakColor = [0.85 0.85 0.85];
     y = growthDat(:,2)*massPerCell;
     e = growthDat(:,3)*massPerCell;
     errorbar(x,y,e, 'o', 'color', secColor, 'linewidth', 1.3)
-    yMax = 1.1*max(y)+max(e);
+    yMax = round(1.1*(max(y)+max(e)));
+    
+    if plotAbsolute
+        ydata = y(:,2:end);
+    else
+        ydata = yconc(:,2:end);
+    end
+    
     
     ylabel('cell count')
     
@@ -41,16 +52,13 @@ breakColor = [0.85 0.85 0.85];
     ylim([0 yMax])
         
 
-    for i = 1:length(breakPoints)
-        txtLabel = sprintf('µ %2.3f', mu(i));
-        text(breakPoints(i), 0.1 * i * maxVal, txtLabel, 'fontsize', 15, 'FontWeight', 'bold')
-    end    
     
-    if plotAbsolute
-        ydata = y(:,2:end);
-    else
-        ydata = yconc(:,2:end);
-    end
+%     for i = 1:length(breakPoints)
+%         txtLabel = sprintf('µ=%2.3f', mu(i));
+%         text(breakPoints(i), 0.03 * maxVal, txtLabel, 'fontsize', 15, 'FontWeight', 'bold', 'Rotation',35)
+%     end    
+    
+
     xlabel('h')
     ylabel('mg cdw')  
     
@@ -94,9 +102,8 @@ breakColor = [0.85 0.85 0.85];
         maxVal = max(data(2,data(1,:)<tMax)+data(3,data(1,:)<tMax));
         maxVal = max(maxVal, max(ydata(:,i)));
         maxVal = 2^ceil(log2(1.1*maxVal));
-        for j = 1:length(breakPoints)
-            plot([breakPoints(j) breakPoints(j)], [0 modelY(j)], '-','Color', breakColor);
-        end            
+
+        plotBreakpoints(t, ydata(:,i), breakPoints, fillColors)
 
         plot(t,ydata(:,i), 'linewidth', 3, 'color', primColor);
         errorbar(data(1,:), data(2,:), data(3,:), 'o', 'color', secColor, 'linewidth', 1.3);
@@ -126,3 +133,16 @@ breakColor = [0.85 0.85 0.85];
     
 end
 
+
+function plotBreakpoints(xdata, ydata, breakPoints, fillColors)
+breakPoints = [breakPoints; max(xdata)];
+
+    for i = 2:length(breakPoints)
+        %plot([breakPoints(i) breakPoints(i)], [0 modelY(i)], '-','Color', breakColor);
+        curData = and((xdata>=breakPoints(i-1)), xdata<=breakPoints(i));
+        if sum(curData)>0
+            fillColors(i-1,:);
+            area(xdata(curData), ydata(curData), 'FaceColor', fillColors(i-1,:), 'EdgeColor', 'none');
+        end
+    end     
+end
