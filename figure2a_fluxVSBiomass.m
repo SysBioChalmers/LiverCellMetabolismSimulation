@@ -64,7 +64,7 @@ hold all
 plot([0 ub], [0 0], 'k-');
 plot([0 ub], [0 -mu*ub], 'color', [0.8 0.8 0.8], 'linewidth', 2);
 
-text(ub*0.8, -mu*ub, sprintf('µ %2.3f',mu))
+text(ub*0.8, -mu*ub, sprintf('µ = %2.3f',mu))
 
 
 lineMets = {'glutamine', 'alanine', 'glutamate'};
