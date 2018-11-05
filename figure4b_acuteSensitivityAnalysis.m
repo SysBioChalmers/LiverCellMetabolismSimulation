@@ -13,7 +13,7 @@ fluxes = curSol.x;
 
 
 
-[normalizedGrowth, xValues, reactionNumbers] = ASA(model, fluxes, 10);
+[normalizedGrowth, xValues, reactionNumbers] = ASA(model, fluxes, 10, true);
 
 
 %save('sensitivity analysis/sensitivityProfilesMaxFlux.mat','growthRates','reactionNumbers', 'simulationSteps')
@@ -21,8 +21,8 @@ fluxes = curSol.x;
 
 %%
 hold all
-%Displace the lines verticly at random by 1% to prevent overlapping lines
-randValues = 0.02 * rand(length(reactionNumbers), 1)-0.01; 
+%Displace the lines verticly at random by 0.5% to prevent overlapping lines
+randValues = 0.01 * rand(length(reactionNumbers), 1)-0.005; 
 normalizedGrowthAndDisplacement = normalizedGrowth + repmat(randValues, 1, length(xValues));
 
 for i = 1:size(normalizedGrowthAndDisplacement,1)
@@ -51,6 +51,17 @@ for i = 1:length(interestingReactions)
 end
 legend(legendIds,conditions);
 legend boxoff
+
+
+growthRates = [0.0359 0.0251 0.0156]; %Reference %No glucose, %No glutamine 
+growthRates = growthRates/growthRates(1);
+
+%experimental glucose
+plot(0, growthRates(2) * [1 1], '*', 'linewidth', 3, 'color', colors(1,:));
+
+%experimental glutamine
+plot(0, growthRates(3) * [1 1], '*', 'linewidth', 3, 'color', colors(2,:));
+
 
 
 axis equal
@@ -92,6 +103,7 @@ legend boxoff
 
 %%
 rxnIds = model.rxns(reactionNumbers);
+%rxnIds = constructEquations(model, reactionNumbers);
 xLabels = cellstr(num2str(round(xValues',2)));
 
 interestingRxns = 1:length(normalizedGrowth);
