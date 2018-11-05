@@ -15,8 +15,12 @@ solution = solveLinMin(model,1);
 
 sources = {'glutamine', 'leucine', 'isoleucine', 'valine', 'phenylalanine', 'arginine', 'cysteine'};
 sinks = {'proline', 'glycine', 'asparagine', 'aspartate', 'tyrosine', 'glutamate', 'alanine', 'serine'};
-curencyMets = {'H2O', 'Pi' 'ubiquinol', 'GSH', 'UDP', 'UTP', 'ATP', 'AMP', 'ADP', 'CoA' 'H+',  'NADH', 'NAD+', 'GMP', 'CTP', 'PPi', 'NADP+', 'NADPH', 'THF', '5,10-methylene-THF', '5,10-methenyl-THF'};
+curencyMets = {'H2O', 'CO2', 'Pi' 'ubiquinol', 'GSH', 'UDP', 'UTP', 'ATP', 'AMP', 'ADP', 'CoA' 'H+',  'NADH', 'NAD+', 'GMP', 'CTP', 'PPi', 'NADP+', 'NADPH', 'THF', '5,10-methylene-THF', '5,10-methenyl-THF'};
 poolRxns = {'human_proteinPool', 'metabolitePool'};
+
+%Filter out fluxes with insignificant contribution to the pool
+smallSolution = filterMets(smallModel, smallSolution, [sources sinks], 0.15);
+
 
 linkAA(smallModel, smallSolution, sources, sinks, curencyMets, poolRxns)
 

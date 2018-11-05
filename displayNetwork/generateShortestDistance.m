@@ -19,7 +19,7 @@ function [C, labels, rxnStart, sourceMets, sinkMets] = generateShortestDistance(
     sourceMets = getNrs(model.metNames, sources);
     sinkMets =  getNrs(model.metNames, sinks);
     sourceAndSink = [sourceMets; sinkMets];
-    
+
     
     %Generate Weighted bipartiet graph
     C = makebipartite(S, smallSolution);
@@ -28,16 +28,11 @@ function [C, labels, rxnStart, sourceMets, sinkMets] = generateShortestDistance(
     labels = [model.metNames;rxnLabels];
 
     %Calculate shortest distance to source
-    NodesToKeep = getNodesToKeep(absC', sinkMets, sourceAndSink, labels);
+    NodesToKeepA = getNodesToKeep(absC', sinkMets, sourceAndSink, labels);
 
     %Calculate shortest distance from source to a node 
-    %NodesToKeepB = getNodesToKeep(C, sourceMets, sourceAndSink);
-    %NodesToKeep = [NodesToKeepA NodesToKeepB];
-    
-    
-    
-        
-    
+    NodesToKeepB = getNodesToKeep(absC, sourceMets, sourceAndSink);
+    NodesToKeep = unique([NodesToKeepA NodesToKeepB]);
     
     filterNodes = true(length(labels),1);
     filterNodes(NodesToKeep) = false;
@@ -84,21 +79,14 @@ function NodesToKeep = getNodesToKeep(C, sources, sinks, labels)
         curPath = [];
         for j=1:length(sinks)
             if sources(i) ~= sinks(j)
-                [crap, sp] = dijkstra(C, sources(i), sinks(j));
-                if  i == 7
-                    labels(sp)
-                end
-                if length(sp)>2 % if no path then only input nodes are returned
-                    cost = length(sp);
-                else
-                    cost = inf;
-                end
+                %[crap, sp] = dijkstra(C, sources(i), sinks(j));
+                [cost, sp] = breadthSearch(C, sources(i), sinks(j));
                 
                 if cost<curLen
-                    curPath = [sp];
+                    curPath = [[] sp(:)'];
                     curLen = cost;
                 elseif cost == curLen
-                    curPath = [curPath sp]; %add all nodes of equal distance
+                    curPath = [curPath sp(:)']; %add all nodes of equal distance
                 end
             end
         end
