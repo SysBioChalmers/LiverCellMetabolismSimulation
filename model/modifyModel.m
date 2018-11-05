@@ -117,6 +117,24 @@ model = setParam(model, 'ub', 'HMR_5426', 0);
 model.lb(findIndex(model.rxns, 'HMR_1572')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_1572')) = 0;
 
+%remove undocumented transport of AKG
+model.lb(findIndex(model.rxns, 'HMR_6391')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_6391')) = 0;
+
+model.lb(findIndex(model.rxns, 'HMR_6330')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_6330')) = 0;
+
+model.lb(findIndex(model.rxns, 'HMR_6293')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_6293')) = 0;
+
+model.lb(findIndex(model.rxns, 'HMR_6289')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_6289')) = 0;
+
+model.lb(findIndex(model.rxns, 'HMR_6286')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_6286')) = 0;
+
+model.lb(findIndex(model.rxns, 'HMR_4851')) = 0;
+model.ub(findIndex(model.rxns, 'HMR_4851')) = 0;
 
 %Allow reversed IDH flux in the mitochondria
 model.lb(findIndex(model.rxns, 'HMR_3958')) = -1000;
@@ -129,6 +147,10 @@ model = setParam(model, 'lb', 'HMR_4459', 0);
 
 %Prevent incorrect proline synthesis reversibility
 model = setParam(model, 'ub', 'HMR_3806', 0);
+
+%Prevent Glutamine->Alanine from unspecific Transaminase
+model = setParam(model, 'ub', 'HMR_4197', 0);
+
 
 %Free glutamate Transport, model infeasible if no glutamate transport available 
 %extracellularly
