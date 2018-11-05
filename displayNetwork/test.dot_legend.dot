@@ -1,21 +1,23 @@
 digraph G {
 key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0" width="200px">
 <tr><td align="left">A. alanine + D-xylulose-5-phosphate + H2O + NAD+ + NADP+ &rarr; DHAP + glycine + 2 H+ + NADH + NADPH + pyruvate</td></tr>
-<tr><td align="left">B. AKG + ATP + CoA + H2O + 2 O2 + tyrosine &rarr; acetoacetyl-CoA + AMP + CO2 + fumarate + glutamate + PPi</td></tr>
-<tr><td align="left">C. 2 5,10-methenyl-THF + aspartate + 4 ATP + CO2 + 2 glutamine + glycine + 3 H2O + PRPP &rarr; 4 ADP + fumarate + 2 glutamate + 2 H+ + IMP + 4 Pi + PPi + 2 THF</td></tr>
-<tr><td align="left">D. glutamate + OAA &rarr; AKG + aspartate</td></tr>
-<tr><td align="left">E. aspartate + ATP + glutamine + H2O &rarr; AMP + asparagine + glutamate + PPi</td></tr>
-<tr><td align="left">F. glutamate + pyruvate &rarr; AKG + alanine</td></tr>
-<tr><td align="left">G. L-glutamate 5-semialdehyde + ubiquinol[m] &rarr; H2O + proline + ubiquinone[m]</td></tr>
-<tr><td align="left">H. ATP + glutamate + H+ + NADPH &rarr; ADP + L-glutamate 5-semialdehyde + NADP+ + Pi</td></tr>
-<tr><td align="left">I. 3-phospho-D-glycerate + glutamate + NAD+ &rarr; 3-phosphoserine + AKG + H+ + NADH</td></tr>
-<tr><td align="left">J. 3-phosphoserine + H2O &rarr; Pi + serine</td></tr>
-<tr><td align="left">K. serine + THF &rarr; 5,10-methylene-THF + glycine + H2O</td></tr>
-<tr><td align="left">L. AKG + 2 CoA + H2O + isoleucine + 2 NAD+ + ubiquinone[m] &rarr; acetyl-CoA + CO2 + glutamate + 2 H+ + 2 NADH + propanoyl-CoA + ubiquinol[m]</td></tr>
-<tr><td align="left">M. AKG + CoA + 2 H2O + 3 NAD+ + ubiquinone[m] + valine &rarr; (R)-methylmalonyl-CoA[m] + CO2 + glutamate + 3 H+ + 3 NADH + ubiquinol[m]</td></tr>
-<tr><td align="left">N. AKG + ATP + CoA + H2O + HCO3- + leucine + NAD+ + ubiquinone[m] &rarr; ADP + CO2 + glutamate + HMG-CoA + NADH + Pi + ubiquinol[m]</td></tr>
-<tr><td align="left">O. O2 + phenylalanine + tetrahydrobiopterin &rarr; dihydrobiopterin + H2O + tyrosine</td></tr>
-<tr><td align="left">P. AKG + phenylalanine &rarr; glutamate + phenylpyruvate</td></tr>
-<tr><td align="left">Q. cysteine + 2 ferricytochrome C + 2 H2O + O2 &rarr; alanine + 2 ferrocytochrome C + 2 H+ + sulfate</td></tr>
+<tr><td align="left">B. 2 5,10-methenyl-THF + aspartate + 4 ATP + CO2 + 2 glutamine + glycine + 3 H2O + PRPP &rarr; 4 ADP + fumarate + 2 glutamate + 2 H+ + IMP + 4 Pi + PPi + 2 THF</td></tr>
+<tr><td align="left">C. glutamate + OAA &rarr; AKG + aspartate</td></tr>
+<tr><td align="left">D. AKG + aspartate &rarr; glutamate + OAA</td></tr>
+<tr><td align="left">E. glutamine + H2O &rarr; glutamate + NH3</td></tr>
+<tr><td align="left">F. aspartate + ATP + glutamine + H2O &rarr; AMP + asparagine + glutamate + PPi</td></tr>
+<tr><td align="left">G. glutamate + pyruvate &rarr; AKG + alanine</td></tr>
+<tr><td align="left">H. AKG + ornithine &rarr; glutamate + L-glutamate 5-semialdehyde</td></tr>
+<tr><td align="left">I. L-glutamate 5-semialdehyde + ubiquinol[m] &rarr; H2O + proline + ubiquinone[m]</td></tr>
+<tr><td align="left">J. ATP + glutamate + H+ + NADPH &rarr; ADP + L-glutamate 5-semialdehyde + NADP+ + Pi</td></tr>
+<tr><td align="left">K. arginine + H2O &rarr; ornithine + urea</td></tr>
+<tr><td align="left">L. 3-phospho-D-glycerate + glutamate + NAD+ &rarr; 3-phosphoserine + AKG + H+ + NADH</td></tr>
+<tr><td align="left">M. 3-phosphoserine + H2O &rarr; Pi + serine</td></tr>
+<tr><td align="left">N. serine + THF &rarr; 5,10-methylene-THF + glycine + H2O</td></tr>
+<tr><td align="left">O. AKG + 2 CoA + H2O + isoleucine + 2 NAD+ + ubiquinone[m] &rarr; acetyl-CoA + CO2 + glutamate + 2 H+ + 2 NADH + propanoyl-CoA + ubiquinol[m]</td></tr>
+<tr><td align="left">P. AKG + CoA + 2 H2O + 3 NAD+ + ubiquinone[m] + valine &rarr; (R)-methylmalonyl-CoA[m] + CO2 + glutamate + 3 H+ + 3 NADH + ubiquinol[m]</td></tr>
+<tr><td align="left">Q. AKG + ATP + CoA + H2O + HCO3- + leucine + NAD+ + ubiquinone[m] &rarr; ADP + CO2 + glutamate + HMG-CoA + NADH + Pi + ubiquinol[m]</td></tr>
+<tr><td align="left">R. O2 + phenylalanine + tetrahydrobiopterin &rarr; dihydrobiopterin + H2O + tyrosine</td></tr>
+<tr><td align="left">S. cysteine + 2 ferricytochrome C + 2 H2O + O2 &rarr; alanine + 2 ferrocytochrome C + 2 H+ + sulfate</td></tr>
 </table>>, shape="box", style="setlinewidth(0)"];
 }

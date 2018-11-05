@@ -29,68 +29,72 @@ glutamate[m] + OAA[m] \n=>
 AKG[c] + aspartate[c] \n=>
  glutamate[c] + OAA[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
 11 [label = "
-glutamine[m] + H2O[m] \n=>
- glutamate[m] + NH3[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
+glutamine[c] + H+[c] + H2O[m] \n=>
+ glutamate[m] + H+[m] + NH3[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
 12 [label = "
 aspartate[c] + ATP[c] + glutamine[c]\nH2O[c] \n=>
  AMP[c] + asparagine[c] + glutamate[c]\nPPi[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
 13 [label = "
+glutamate[m] + pyruvate[m] \n=>
+ AKG[m] + alanine[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
+14 [label = "
 AKG[m] + ornithine[m] \n=>
  glutamate[m] + L-glutamate 5-semialdehyde[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-14 [label = "
+15 [label = "
 ATP[m] + glutamate[m] + H+[m]\nNADPH[m] \n=>
  ADP[m] + L-glutamate 5-semialdehyde[m] + NADP+[m]\nPi[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-15 [label = "
+16 [label = "
 3-phospho-D-glycerate[c] + glutamate[c] + NAD+[c] \n=>
  3-phosphoserine[c] + AKG[c] + H+[c]\nNADH[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-16 [label = "
+17 [label = "
 H+[c] + 2 H2O[c] + histidine[c]\nTHF[c] \n=>
  5,10-methenyl-THF[c] + glutamate[c] + 2 NH3[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-17 [label = "
-2 AKG[m] + CoA[m] + H+[c]\n2 H2O[m] + lysine[c] + 4 NAD+[m]\nNADPH[m] + ornithine[m] + ubiquinone[m] \n=>
- acetoacetyl-CoA[m] + 2 CO2[m] + 2 glutamate[m]\n4 H+[m] + 4 NADH[m] + NADP+[m]\nornithine[c] + ubiquinol[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
 18 [label = "
+2 AKG[m] + CoA[m] + H+[c]\n2 H2O[m] + lysine[c] + 3 NAD+[m]\nornithine[m] + ubiquinone[m] \n=>
+ acetoacetyl-CoA[m] + 2 CO2[m] + 2 glutamate[m]\n4 H+[m] + 3 NADH[m] + ornithine[c]\nubiquinol[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
+19 [label = "
 AKG[c] + 2 CoA[m] + H+[c]\nH2O[m] + isoleucine[c] + 2 NAD+[m]\nubiquinone[m] \n=>
  acetyl-CoA[m] + CO2[m] + glutamate[c]\n3 H+[m] + 2 NADH[m] + propanoyl-CoA[m]\nubiquinol[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-19 [label = "
+20 [label = "
 AKG[c] + CoA[m] + 2 H2O[m]\n3 NAD+[m] + ubiquinone[m] + valine[c] \n=>
  (R)-methylmalonyl-CoA[m] + CO2[m] + glutamate[c]\n3 H+[m] + 3 NADH[m] + ubiquinol[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-20 [label = "
+21 [label = "
 AKG[c] + ATP[m] + CoA[m]\nH+[c] + H2O[m] + HCO3-[m]\nleucine[c] + NAD+[m] + succinyl-CoA[m]\nubiquinone[m] \n=>
  acetoacetyl-CoA[m] + acetyl-CoA[m] + ADP[m]\nCO2[m] + glutamate[c] + H+[m]\nNADH[m] + Pi[m] + succinate[m]\nubiquinol[m]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-21 [label = "
+22 [label = "
 AKG[c] + phenylalanine[c] \n=>
  glutamate[c] + phenylpyruvate[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-22 [label = "
+23 [label = "
 cystine[s] + glutamate[c] + 2 GSH[c] \n=>
  2 cysteine[c] + glutamate[s] + GSSG[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-23 [label = "
+24 [label = "
 2 ATP[c] + cysteine[c] + glutamate[c]\nglycine[c] \n=>
  2 ADP[c] + GSH[c] + 2 Pi[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-24 [label = "
+25 [label = "
 acetyl-CoA[c] + fructose-6-phosphate[c] + glutamine[c]\nUTP[c] \n=>
  CoA[c] + glutamate[c] + PPi[c]\nUDP-N-acetylglucosamine[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-25 [label = "
+26 [label = "
 aspartate[m] + glutamate[c] + H+[c] \n=>
  aspartate[c] + glutamate[m] + H+[m]\n", fillcolor = "#E0E0E0", shape="box", style="filled,setlinewidth(0)"];
-26 [label = "
+27 [label = "
 0.0778 alanine[c] + 0.0531 arginine[c] + 0.0373 asparagine[c]\n0.0547 aspartate[c] + 0.014 cysteine[c] + 0.0778 glutamate[c]\n0.0442 glutamine[c] + 0.0697 glycine[c] + 0.0205 histidine[c]\n0.0502 isoleucine[c] + 0.095 leucine[c] + 0.0716 lysine[c]\n0.023 methionine[c] + 0.0363 phenylalanine[c] + 0.0499 proline[c]\n0.0679 serine[c] + 0.0526 threonine[c] + 0.0096 tryptophan[c]\n0.0274 tyrosine[c] + 0.0674 valine[c] \n=>
  human_protein_pool[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-27 [label = "
+28 [label = "
 0.004256 (S)-dihydroorotate[c] + 0.001372 2,3-bisphospho-D-glycerate[c] + 0.002171 3-phospho-D-glycerate[c]\n0.002548 3-phosphoserine[c] + 0.000168 acetyl-CoA[c] + 0.003295 ADP[c]\n0.004615 AKG[c] + 0.040409 alanine[c] + 0.000243 AMP[c]\n0.001476 arginine[c] + 0.001245 asparagine[c] + 0.086401 aspartate[c]\n0.027057 ATP[c] + 0.003381 citrate[c] + 0.023369 CoA[c]\n0.005194 CTP[c] + 0.000486 cysteine[c] + 0.000214 dCMP[c]\n0.009415 DHAP[c] + 0.008772 fructose-1,6-bisphosphate[c] + 0.000562 fructose-6-phosphate[c]\n0.002808 fumarate[c] + 0.000816 GAP[c] + 0.000174 GDP[c]\n0.003908 glucose-6-phosphate[c] + 0.36912 glutamate[c] + 0.099753 glutamine[c]\n0.021499 glycine[c] + 0.000104 GMP[c] + 0.017868 GSH[c]\n0.000104 GSSG[c] + 0.00392 GTP[c] + 0.002374 histidine[c]\n0.000185 isocitrate[c] + 0.010185 isoleucine[c] + 0.010185 leucine[c]\n0.00293 lysine[c] + 0.008043 malate[c] + 0.0037 methionine[c]\n0.002907 NAD+[c] + 0.000434 NADH[c] + 0.000162 NADP+[c]\n0.000376 NADPH[c] + 0.004864 phenylalanine[c] + 0.010237 phenylpyruvate[c]\n0.007133 proline[c] + 0.034017 pyruvate[c] + 0.000162 ribose-5-phosphate[c]\n0.028134 serine[c] + 0.038748 threonine[c] + 0.001042 tryptophan[c]\n0.005431 tyrosine[c] + 0.00077 UDP[c] + 0.00883 UDP-glucose[c]\n0.000567 UDP-glucuronate[c] + 0.051926 UDP-N-acetylglucosamine[c] + 0.010208 UTP[c]\n0.008761 valine[c] \n=>
  metabolitePool[c]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-28 [label = "
+29 [label = "
 glutamate[c] \n=>
  glutamate[s]\n", fillcolor = "#808080", fontcolor = "#FFFFFF", shape="box", style="filled,setlinewidth(0)"];
-1 -> 15 [label = "14.96", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.375036];
-1 -> 22 [label = "10.70", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=5.646919];
-1 -> 23 [label = "0.36", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
-1 -> 25 [label = "313.80", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=12.983295];
-1 -> 26 [label = "13.04", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.076203];
-1 -> 27 [label = "7.32", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.821326];
-1 -> 28 [label = "17.30", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.690231];
+1 -> 16 [label = "14.96", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.375036];
+1 -> 23 [label = "10.70", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=5.646919];
+1 -> 24 [label = "0.36", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
+1 -> 26 [label = "313.80", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=12.983295];
+1 -> 27 [label = "13.04", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.076203];
+1 -> 28 [label = "7.32", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.821326];
+1 -> 29 [label = "17.30", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=6.690231];
 2 -> 9 [label = "352.67", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=13.236851];
-2 -> 14 [label = "6.39", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.528494];
+2 -> 13 [label = "56.08", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=9.244048];
+2 -> 15 [label = "6.39", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.528494];
 3 -> 1 [label = "1.02", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.537164];
 4 -> 1 [label = "9.74", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=5.442581];
 5 -> 1 [label = "2.05", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=2.063520];
@@ -98,15 +102,15 @@ glutamate[c] \n=>
 7 -> 1 [label = "1.92", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=1.918662];
 8 -> 2 [label = "7.63", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.913579];
 10 -> 1 [label = "321.75", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=13.037569];
-11 -> 2 [label = "33.63", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=8.133687];
+11 -> 2 [label = "89.71", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=10.264229];
 12 -> 1 [label = "6.28", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.488404];
-13 -> 2 [label = "2.11", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=2.122906];
-16 -> 1 [label = "0.82", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
-17 -> 2 [label = "1.88", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=1.875695];
-18 -> 1 [label = "11.38", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=5.781640];
-19 -> 1 [label = "6.53", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.574718];
-20 -> 1 [label = "7.88", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.981697];
-21 -> 1 [label = "0.20", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
-24 -> 1 [label = "2.81", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=2.742213];
-25 -> 2 [label = "313.80", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=12.983295];
+14 -> 2 [label = "2.11", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=2.122906];
+17 -> 1 [label = "0.82", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
+18 -> 2 [label = "1.88", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=1.875695];
+19 -> 1 [label = "11.38", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=5.781640];
+20 -> 1 [label = "6.53", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.574718];
+21 -> 1 [label = "7.88", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=4.981697];
+22 -> 1 [label = "0.20", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=0.500000];
+25 -> 1 [label = "2.81", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=2.742213];
+26 -> 2 [label = "313.80", arrowsize=3.00, fontsize=20, color="#A0A0A0", penwidth=12.983295];
 }

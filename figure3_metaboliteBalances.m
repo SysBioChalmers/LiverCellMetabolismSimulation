@@ -9,30 +9,49 @@ model = setupBiomass(model, 150, 0.5);
 model = bindFBA(model, fluxMets, fluxValues(:,2)/1000);
 
 
-model.lb(findIndex(model.rxns, 'HMR_4940')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6391')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_6330')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6330')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_6293')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6293')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_6289')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6289')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_6286')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6286')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_4851')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_4851')) = 0;
-
-
 solution = solveLinMin(model,1)
 
 
 [smallModel, smallSolution] = gemPress(model, solution.x, false, false);
 result = balanceValidation(smallModel, smallSolution);
+
+includedMets = {
+'(R)-methylmalonyl-CoA[m]'
+'3-phosphoserine[c]'
+'acetoacetyl-CoA[m]'
+'acetyl-CoA[m]'
+'AKG[c]'
+'AKG[m]'
+'alanine[c]'
+'alanine[m]'
+'asparagine[c]'
+'aspartate[c]'
+'aspartate[m]'
+'citrate[c]'
+'citrate[m]'
+'cysteine[c]'
+'fumarate[m]'
+'glutamate[c]'
+'glutamate[m]'
+'glutamine[c]'
+'glycine[c]'
+'isocitrate[m]'
+'isoleucine[c]'
+'leucine[c]'
+'L-glutamate 5-semialdehyde[m]'
+'malate[c]'
+'malate[m]'
+'OAA[c]'
+'OAA[m]'
+'proline[c]'
+'propanoyl-CoA[m]'
+'pyruvate[c]'
+'serine[c]'
+'succinate[m]'
+'succinyl-CoA[m]'
+'valine[c]'};
+
+makeMetMetMap(smallModel, smallSolution, includedMets);
 
 
 %printExchangeFluxes(model, solution.x);
