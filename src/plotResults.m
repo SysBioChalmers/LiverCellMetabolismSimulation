@@ -1,4 +1,4 @@
-function plotResults(t, yAbs, yconc, breakPoints, mu, expData, growthDat, plotMets)
+function plotResults(t, yAbs, yconc, breakPoints, mu, expData, growthDat, plotMets, width)
 global massPerCell
 breakPoints = [0;  breakPoints];
 breakPoints(end) = [];
@@ -25,7 +25,7 @@ fillColors = [199 227 187
 
     modelY = interp1q(t,yAbs(:,1),breakPoints);
     
-    maxVal = max((growthDat(:,2) +  growthDat(:,3)) * massPerCell);
+    maxVal = max(growthDat(:,2) * massPerCell);
     maxVal = max(maxVal, max(yAbs(:,1)));
     
     plotBreakpoints(t, yAbs(:,1), breakPoints, fillColors)
@@ -34,9 +34,11 @@ fillColors = [199 227 187
     a1 = gca;
     x = growthDat(:,1);
     y = growthDat(:,2)*massPerCell;
-    e = growthDat(:,3)*massPerCell;
-    errorbar(x,y,e, 'o', 'color', secColor, 'linewidth', 1.3)
-    yMax = round(1.1*(max(y)+max(e)));
+    %e = growthDat(:,3)*massPerCell;
+    %errorbar(x,y,e, 'o', 'color', secColor, 'linewidth', 1.3)
+    translucentScatter(x, y, secColor, 0.5, 1);
+    
+    yMax = ceil(1.1*(max(y)));
     
     if plotAbsolute
         ydata = y(:,2:end);
@@ -80,9 +82,9 @@ fillColors = [199 227 187
     figure()
     %plot AA
     dict = expData.keys;
-    subplotDimentionsX = ceil(sqrt(length(plotMets)));
+    %subplotDimentionsX = ceil(sqrt(length(plotMets)));
 
-     subplotDimentionsX = 4;
+     subplotDimentionsX = width;
      subplotDimentionsY = ceil(length(plotMets)/subplotDimentionsX);
 %     subplotDimentionsX = 1;
 %     subplotDimentionsY = 4;    
@@ -97,6 +99,7 @@ fillColors = [199 227 187
         subplot(subplotDimentionsY,subplotDimentionsX,k);        
         hold all        
         data = expData(dict{i});
+        
         modelY = interp1q(t,ydata(:,i),breakPoints);
 
         maxVal = max(data(2,data(1,:)<tMax)+data(3,data(1,:)<tMax));
@@ -106,7 +109,12 @@ fillColors = [199 227 187
         plotBreakpoints(t, ydata(:,i), breakPoints, fillColors)
 
         plot(t,ydata(:,i), 'linewidth', 3, 'color', primColor);
-        errorbar(data(1,:), data(2,:), data(3,:), 'o', 'color', secColor, 'linewidth', 1.3);
+        
+        if sum(data(3,:))>0
+            errorbar(data(1,:), data(2,:), data(3,:), 'marker', 'none', 'LineStyle','none', 'color', secColor, 'linewidth', 1.3);
+        end
+        translucentScatter(data(1,:), data(2,:), secColor, 0.5, 1);
+        
         titleStr = strrep(dict{i}, '[s]', '');
         text(tMax*0.1,maxVal*0.85,titleStr, 'FontSize', 15, 'FontWeight', 'bold', 'color', 0.4*[1 1 1])
 
