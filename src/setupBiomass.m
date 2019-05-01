@@ -19,6 +19,11 @@ function model = setupBiomass(model, GAM, maintainance)
         model.S(metFilter,metRxn) = 0;
     end
     
+    taurineMet = true;
+    if taurineMet == true
+        model = configureSMatrix(model, 0.015, 'metabolitePool', 'taurine[c]');
+    end
+    
     oddChainFA = false;
     if oddChainFA
         lactRxn = createRXNStuct(model, 'oddChainFA', '0.067821068 myristic acid[c] + 0.04473304 pentadecylic acid[c] + 0.715728716 palmitate[c] + 0.02020202 margaric acid[c] + 0.038961039 oleate[c] + 0.112554113 stearate[c] => oddFA[c]', -1000, 1000, 'Artificall reactions');
