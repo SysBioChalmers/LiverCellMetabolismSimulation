@@ -1,0 +1,112 @@
+clc
+close all
+addpath('src')
+massPerCell = 426.8 * 10^-12; %g per cell
+massPerMCell = massPerCell*10^6;
+
+color = [93 155 211
+         215 86 40
+         238 178 32]/256;
+
+%leaving out  'Butyrate', 'Taurine', 'Citrulline' 
+metabolitesToPlot = {'Alanine' 'Arginine' 'Asparagine' 'Aspartic acid' 'Cystine' 'Glutamic acid' 'Glutamine' 'Glycine' 'Histidine' 'Iso-leucine' 'Leucine' 'Lysine' 'Methionine' 'Ornithine' 'Phenylalanine' 'Proline' 'Serine' 'Threonine' 'Tryptophan' 'Tyrosine' 'Valine'};
+
+volData = importdata('volume.txt');
+volData(:,1) = volData(:,1)-volData(1,1); %move time to 0
+
+condition = '22';
+[dataX, dataY, metlabels] = makeDataStructureNew(condition, metabolitesToPlot);
+tvals = unique(dataX(:,1))';
+
+x0 = estimateInitialX(dataX, dataY, tvals);
+
+modelfun = @(x,y) fitFunction(x, y, tvals, volData(:,2));
+
+nrRestarts = 5;
+scale = 0.8;
+
+[beta,R,J,CovB,MSE,EMI] = nlinfit(dataX, dataY, modelfun, x0, 'ErrorModel', 'combined');
+
+referenceMSE = MSE;
+
+for i=1:nrRestarts
+    curX0 = x0 + 2*(rand(size(x0))-0.5).*x0*scale;
+    [tbeta,tR,tJ,tCovB,tMSE,tEMI] = nlinfit(dataX, dataY, modelfun, curX0, 'ErrorModel', 'combined');
+    if tMSE<referenceMSE
+        figure()
+        beta = tbeta;
+        R = tR;
+        J = tJ;
+        CovB = tCovB;
+        referenceMSE = tMSE;
+        EMI = tEMI;
+    end
+end
+    
+conf = nlparci(beta,R,'covar',CovB);
+
+figure()
+hold all
+predGrowth = beta(1,2);
+confGrowth = conf(size(beta,1)+1,:);
+
+bar(1,predGrowth)
+errorbar(1, predGrowth, confGrowth(1)-predGrowth, confGrowth(2)-predGrowth,'k.');
+ylim([0 0.05])
+
+figure()
+hold all
+
+predFlux =  beta(2:end,2)/massPerMCell;
+
+confFlux = conf((size(beta,1)+2):end,:)/massPerMCell;
+xLocation = 1:length(predFlux);
+bar(xLocation,predFlux)
+errorbar(xLocation, predFlux, confFlux(:,1)-predFlux, confFlux(:,2)-predFlux,'k.');
+ylim([-150 50])
+xticks(xLocation)
+xticklabels(metlabels(2:end));
+xtickangle(90)
+
+figure()
+trange = linspace(tvals(1),tvals(end));
+
+
+for i = 1:length(xLocation)
+    subplot(4,6,i)
+    hold all
+    filter = dataX(:,2)==i;
+
+    xrange = [trange' ones(length(trange), 1)*i];
+
+    [ypred,delta] = nlpredci(modelfun, xrange, beta, R, 'Covar', CovB, 'MSE', MSE, 'ErrorModelInfo',EMI, 'SimOpt', 'on', 'Alpha', 0.1);
+    lower = ypred - delta;
+    upper = ypred + delta;
+    ul = [lower upper];
+    
+    fillArea(trange, ul, color(1,:))
+    scatter(dataX(filter,1), dataY(filter), 'MarkerFaceColor', color(2,:), 'MarkerEdgeColor', color(2,:),'MarkerFaceAlpha', 0.5, 'MarkerEdgeAlpha', 1)
+    plot(trange, ypred, 'k-', 'linewidth', 2)
+
+    title(metlabels{i})
+    maxval = ylim;
+    ylim([0 maxval(2)])    
+end
+
+
+filename = 'he'
+
+fileID = fopen(filename,'w');
+fprintf(fileID,'%s', makeHeaderEntry(sampleMap));
+
+for i = 1:length(rawMets)
+    curMet = rawMets{i};
+    for j = 1:size(rawData,2)
+        curID = rawID(j);
+        curVal = rawData{i,j};
+        curStr = makeStringEntry(sampleMap, curMet, curID, curVal);
+        fprintf(fileID,'\n%s', curStr);
+    end
+end
+
+fclose(fileID);
