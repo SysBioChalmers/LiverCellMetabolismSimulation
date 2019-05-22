@@ -5,7 +5,7 @@
 %load Raven Model
 addpath('../src')
 addpath('cellLineSpecificModel')
-model = importExcelModel('HMRdatabase2_00.xlsx');
+model = importExcelModel('HMRdatabase2_00.xls');
 
 %Standardize the direction of exchange fluxes, negative flux = uptake
 model = createConsistentReactionDirection(model);
@@ -63,9 +63,18 @@ model = setParam(model, 'ub', 'HMR_5151', 0);
 
 save('genericHuman', 'model')
 
+%Blocking this reaction is required to prevent a deamination cycle in
+%cytoplasm that shares reaction steps with glycolysis and thereby becomes
+%parsimonius. 
+model.ub(findIndex(model.rxns, 'HMR_4299')) = 0;
+
 %Aldo-keto reductase family 1 is downregulated 400 fold
 %Also unclear how this gene has anything to do with sulfur metabolism
 model = setParam(model, 'ub', 'HMR_4840', 0);
+
+%Not expressed in hepg2 (proteinatlas.org) and only proceds in reversed
+%direction (reactome.org)
+model.ub(findIndex(model.rxns, 'HMR_8022')) = 0;
 
 %Glutaminase is not cytosolic 
 model = setParam(model, 'lb', 'HMR_9802', 0);
@@ -79,14 +88,47 @@ model = setParam(model, 'ub', 'HMR_8779', 0);
 model = setParam(model, 'lb', 'HMR_4196', 0); %oxoglutamarate
 model = setParam(model, 'ub', 'HMR_4196', 0); %
 
+%No support for this pantetheine reaction in human
+model.ub(findIndex(model.rxns,'HMR_4716')) =0;
+
+%these pantetheine relate reactions are irreversible 
+model.ub(findIndex(model.rxns,'HMR_4730')) =0;
+model.ub(findIndex(model.rxns,'HMR_4731')) =0;
+model.lb(findIndex(model.rxns,'HMR_4679')) =0;
+model.lb(findIndex(model.rxns,'HMR_4717')) =0;
+
+%ATP is the cofactor of PPCS in human
+model.eccodes{findIndex(model.rxns,'HMR_4723')} = 'EC:6.3.2.51';
+model = configureSMatrix(model, 0, 'HMR_4723', 'CTP[c]');
+model = configureSMatrix(model, 0, 'HMR_4723', 'CMP[c]');
+model = configureSMatrix(model, 1, 'HMR_4723', 'ATP[c]');
+model = configureSMatrix(model, -1, 'HMR_4723', 'AMP[c]');
+
+%CTP is thought to operate in oposite direction eg pmid: 18406340  
+model.lb(findIndex(model.rxns,'HMR_4964')) = -1000;
+%Prevents free proton gradient:
+model = configureSMatrix(model, 0, 'HMR_4964', 'H+[m]');
+model = configureSMatrix(model, 0, 'HMR_4964', 'H+[c]');
+
+%Acts on hydroxyproline (uniprot Q9UF12)
+%model.ub(findIndex(model.rxns,'HMR_3838')) =0;
+
+%No support for this reaction in the reference (PMID 14598172)
+model.lb(findIndex(model.rxns,'HMR_4972')) =0;
+model.ub(findIndex(model.rxns,'HMR_4972')) =0;
+
+%Provides TCA with substrate protein atlas (ENSG00000183048)
+%model.ub(findIndex(model.rxns,'HMR_4865')) =0;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Mitochondrial lactate dehydrogenase bypasses the pyruvate carrier and need
 %for malate-aspartate shutle
 model = setParam(model, 'ub', 'HMR_4280', 0);
 model = setParam(model, 'lb', 'HMR_4280', 0);
 
-
-%Remove pyr to dATP, dGTP a
+%Remove pyr to dATP, dGTP
 model = setParam(model, 'lb', 'HMR_4421', 0);
 model = setParam(model, 'ub', 'HMR_4421', 0);
 model = setParam(model, 'lb', 'HMR_4573', 0);
@@ -98,8 +140,7 @@ model = setParam(model, 'ub', 'HMR_4210', 0);
 model = setParam(model, 'ub', 'HMR_4193', 0);
 model = setParam(model, 'ub', 'HMR_4171', 0);
 
-
-%Gene codes for transporter for malate not AKG 
+%The gene codes for transporter of malate not AKG 
 model = setParam(model, 'lb', 'HMR_6330', 0);
 model = setParam(model, 'ub', 'HMR_6330', 0);
 model = setParam(model, 'lb', 'HMR_4851', 0);
@@ -116,6 +157,9 @@ model = setParam(model, 'ub', 'HMR_5426', 0);
 %Remove undocumented HMG-CoA tranporter
 model.lb(findIndex(model.rxns, 'HMR_1572')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_1572')) = 0;
+
+%Remove undocumented threonine conversion
+model.ub(findIndex(model.rxns, 'HMR_4284')) = 0;
 
 %remove undocumented transport of AKG
 model.lb(findIndex(model.rxns, 'HMR_6391')) = 0;
@@ -137,7 +181,9 @@ model.lb(findIndex(model.rxns, 'HMR_4851')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_4851')) = 0;
 
 %Allow reversed IDH flux in the mitochondria
-model.lb(findIndex(model.rxns, 'HMR_3958')) = -1000;
+%Formally correct but creates an annoying loop
+%Mainly relevant for C13 studies
+%model.lb(findIndex(model.rxns, 'HMR_3958')) = -1000;
 
 %propanoate directionality, else cells can produce atp from 
 %BCAA->propanoate
@@ -150,7 +196,6 @@ model = setParam(model, 'ub', 'HMR_3806', 0);
 
 %Prevent Glutamine->Alanine from unspecific Transaminase
 model = setParam(model, 'ub', 'HMR_4197', 0);
-
 
 %Free glutamate Transport, model infeasible if no glutamate transport available 
 %extracellularly
@@ -170,7 +215,6 @@ lactRxn = createRXNStuct(model, 'aspartateExporter', 'aspartate[m] => aspartate[
 model=addRxns(model,lactRxn,3,'c',false);
 
 
-
 %reconstruction of cysteine de sulfurase pathway:
 %Significantly upregulated (ENSG00000244005)
 lactRxn = createRXNStuct(model, 'cysteineDesulfurase', 'cysteine[c] + GSH[c] => S-Sulfanylglutathione[c] + alanine[c]', 0, 1000, 'Sulfur metabolism');
@@ -182,7 +226,6 @@ model=addRxns(model,lactRxn,3,'c',false);
 
 %Make the cell specific knock outs
 model = hepG2Constrain(model);
-
 
 
 %Manual curation of HEPG2 specific expression
