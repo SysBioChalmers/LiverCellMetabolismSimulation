@@ -1,0 +1,42 @@
+GroupName	RXNS	Stochiometry	Coordinates
+Biosynthesis	HMR_4300;HMR_3903;HMR_4194;HMR_4034;HMR_4808;HMR_4406;HMR_4046;HMR_4658	1;1;1;1;1;1;1;-1	767;185
+Biosynthesis-GAG	HMR_4300	1	1138;185
+Biosynthesis-ASP	HMR_3903	1	902;185
+Biosynthesis-Nucleotides	HMR_4194;HMR_4034;HMR_4808;HMR_4406;HMR_4046;HMR_4658	1;1;1;1;1;-1	1034;185
+Deamination of BCAA	HMR_3747;HMR_3777;HMR_6923	1;1;1	1187;344
+Deamination of BCAA-Valine	HMR_3747	1	1123;392
+Deamination of BCAA-Isoleucine	HMR_3777	1	1123;440
+Deamination of BCAA-Leucine	HMR_6923	1	1127;485
+Biomass-Protein	human_proteinPool	0.0778	1501;193
+Biomass-FreeAA	metabolitePool	0.099753	1507;262
+GSH synthesis	HMR_4326	1	1377;290
+Serine synthesis	HMR_3841	1	1350;394
+Lipid synthesis	HMR_4149	1	1240;803
+Cystein degradation NFS1	cysteineDesulfurase	1	1543;463
+Glycine synthesis AGTX	HMR_4788	1	1492;657
+Glycine synthesis THF	HMR_3845	1	1384;634
+AKG->GLU	HMR_3804	1	705;503
+CIT->AKG (IDH1)	HMR_0710	1	1036;631
+ACCOA->TCA	HMR_4145	-1	506;600
+AKG->SUC	HMR_5297	1	667;739
+BCAT->SUC	HMR_3215	1	735;760
+BCAT->ACCOA	HMR_3885;HMR_1577	2;1	790;810
+G6P->PPP	HMR_4306	-1	100;356
+SUC->MAL	HMR_4410	1	461;781
+Transport Proline	HMR_5126	1	513;350
+Transport Citrate	HMR_4964	-1	814;663
+Transport Pyruvate	HMR_4926	1	300;500
+Transport Glutamine	HMR_5101	1	720;280
+Transport Alanine	HMR_5113	-1	310;350
+Transport Aspartate	aspartateExporter	1	410;350
+Transport Glutamate	HMR_3829;HMR_5122;HMR_3825	-1;1;1	1010;350
+MAL-ASP	HMR_4852	-1	870;531
+Exchange Glucose	HMR_9034	-1	110;110
+Exchange Lactate	HMR_9135	1	81;660
+Exchange Pyruvate	HMR_9133	1	81;500
+Exchange Cystine	HMR_9363	-1	1394;67
+Exchange Glutamate	HMR_9071	1	1312;92
+Exchange Alanine	HMR_9061	1	301;80
+Exchange Glutamine	HMR_9063	-1	643;80
+Exchange Proline	HMR_9068	1	514;80
+Exchange Biomass	humanGrowhOut	0.001	1581;83

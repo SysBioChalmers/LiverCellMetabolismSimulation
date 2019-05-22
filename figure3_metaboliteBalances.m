@@ -1,96 +1,95 @@
 clc
+close all
 load('model/genericHuman2')
 addpath('src')
 addpath('displayNetwork')
+primColor = [17 115 187]/256;
+secColor  = [216 85 39]/256;
 
+epsilon = 10^-6;
+cellType = 'hepg2';
+condition = '22';
+setErrorBounds = false;
 
-[fluxMets, fluxValues] = loadFluxes('fluxvalues', 'hepg2-6mm-.txt');
-model = setupBiomass(model, 150, 0.5);
-model = bindFBA(model, fluxMets, fluxValues(:,2)/1000);
+if strcmp(cellType, 'hepg2')
+    fileName = ['confidenceIntervalls\output\hepg2-' num2str(condition) '.tsv'];
+    raw = IO(fileName);
+    fluxMets = raw(2:end,1);
+    fluxValues = cell2nummat(raw(2:end,2));
+    fluxData = fluxValues/1000;
+    fluxError = cell2nummat(raw(2:end,3:4));
+else
+    [fluxMets, fluxValues] = loadFluxes('fluxvalues', cellType, condition);
+    fluxData = fluxValues(:,2)/1000;
+end
 
+model = setupBiomass(model, 48, 1);
+model = bindFBA(model, fluxMets, fluxData);
 
-solution = solveLinMin(model,1)
+solution = solveLinMin(model,1);
+flux = solution.x * 1000;
 
+[groupNames, reactionGroups, rxnStochiometry, coordinates] = importReactionGroups('rxnGroups/metaboliteMap.txt');
 
-[smallModel, smallSolution] = gemPress(model, solution.x, false, false);
-result = balanceValidation(smallModel, smallSolution);
+results = zeros(length(groupNames),3);
 
-includedMets = {
-'(R)-methylmalonyl-CoA[m]'
-'3-phosphoserine[c]'
-'acetoacetyl-CoA[m]'
-'acetyl-CoA[m]'
-'AKG[c]'
-'AKG[m]'
-'alanine[c]'
-'alanine[m]'
-'asparagine[c]'
-'aspartate[c]'
-'aspartate[m]'
-'citrate[c]'
-'citrate[m]'
-'cysteine[c]'
-'fumarate[m]'
-'glutamate[c]'
-'glutamate[m]'
-'glutamine[c]'
-'glycine[c]'
-'isocitrate[m]'
-'isoleucine[c]'
-'leucine[c]'
-'L-glutamate 5-semialdehyde[m]'
-'malate[c]'
-'malate[m]'
-'OAA[c]'
-'OAA[m]'
-'proline[c]'
-'propanoyl-CoA[m]'
-'pyruvate[c]'
-'serine[c]'
-'succinate[m]'
-'succinyl-CoA[m]'
-'valine[c]'};
+for i = 1:length(groupNames)
+    curRxns = reactionGroups{i};
+    curFlux = 0;
+    curStoch = rxnStochiometry{i};
+    for j = 1:length(curRxns)
+        rxnId = findIndex(model.rxns, curRxns{j});
+        if not(isempty(rxnId))
+            curFlux = curFlux + flux(rxnId) * curStoch(j);
+        end
+    end
+    results(i,1) = curFlux;    
+end
 
-makeMetMetMap(smallModel, smallSolution, includedMets);
+if setErrorBounds
+    %Set flux error as bounds
+    model.ub(findIndex(model.rxns, 'newAlbumin')) = 0;
+    fluxError(findIndex(fluxMets,'biomass[s]'),:) = fluxError(findIndex(fluxMets,'biomass[s]'),:)*1000;
+    model = bindFBAInterval(model, fluxMets, fluxError/1000);
+else
+    model.lb(findIndex(model.rxns,'humanGrowhOut')) = -solution.f - epsilon;
+    model.ub(findIndex(model.rxns,'humanGrowhOut')) = -solution.f + epsilon;
+end
 
+for i = 1:length(reactionGroups)
+    curRxns = reactionGroups{i};
+    curStoch = rxnStochiometry{i};
+    model.c = zeros(length(model.rxns),1);
+    
+    for j = 1:length(curRxns)
+        rxnNr = findIndex(model.rxns, curRxns{j});
+        model.c(rxnNr) = curStoch(j);
+    end    
+    %Maximize
+    solution = solveLin(model,1);
+    results(i,3) = -solution.f * 1000;
+    
+    %Minimize
+    model.c = -1 * model.c;    
+    solution = solveLin(model,1);
+    results(i,2) = solution.f * 1000;
+end
 
-%printExchangeFluxes(model, solution.x);
-%printExchangeFluxes(smallModel, smallSolution);
+results(results(:,2)<-1000,2) = -inf;
+results(results(:,3)>1000,3) = inf;
 
-%makeDotGraph(smallModel, smallSolution, {'aspartate[c]', 'asparagine[c]'});
-%makeDotGraph(smallModel, smallSolution, {'glutamate[c]', 'L-glutamate 5-semialdehyde[c]'});
-%makeDotGraph(smallModel, smallSolution, {'proline[c]', 'L-glutamate 5-semialdehyde[m]'});
-%makeDotGraph(smallModel, smallSolution, {'arginine[c]'});
-%makeDotGraph(smallModel, smallSolution, {'glucose[c]' , 'glucose-6-phosphate[c]', 'ribose-5-phosphate[c]', 'ribulose-5-phosphate[c]', 'fructose-6-phosphate[c]', 'GAP[c]', 'DHAP[c]', 'D-xylulose-5-phosphate[c]'})
-
-%makeDotGraph(smallModel, smallSolution, {'malate[c]', 'pyruvate[c]', 'L-lactate[c]'})
-%makeDotGraph(smallModel, smallSolution, {'5,10-methylene-THF[c]', '5,10-methenyl-THF[c]', 'THF[c]'})
-%makeDotGraph(smallModel, smallSolution, {'serine[c]', 'glycine[c]'})
-%makeDotGraph(smallModel, smallSolution, {'cysteine[c]','homocysteine[c]', 'methionine[c]'})
-%makeDotGraph(smallModel, smallSolution, {'leucine[c]', 'acetoacetyl-CoA[m]', 'cholesterol[c]'});
-%makeDotGraph(smallModel, smallSolution, {'(R)-methylmalonyl-CoA[m]', 'propanoyl-CoA[m]', 'pentadecanoyl-[ACP][c]', 'pentadecylic acid[c]', 'margaric acid[c]'})
-%makeDotGraph(smallModel, smallSolution, {'(R)-methylmalonyl-CoA[m]', 'propanoyl-CoA[m]', 'succinate[c]'})
-%makeDotGraph(smallModel, smallSolution, {'NADPH[c]', 'NADPH[m]'}) 
-makeDotGraph(smallModel, smallSolution, {'citrate[c]', 'isocitrate[c]', 'AKG[c]', 'AKG[m]'})
-
-makeDotGraph(smallModel, smallSolution, {'serine[c]', 'glycine[c]', '5,10-methylene-THF[c]', '5,10-methenyl-THF[c]'})
-makeDotGraph(smallModel, smallSolution, {'cysteine[c]', 'sulfite[m]', 'sulfite[c]', 'sulfate[c]'})
-
-makeDotGraph(smallModel, smallSolution, {'glutamate[m]', 'glutamate[c]'}) 
-
-%makeDotGraph(smallModel, smallSolution, {'glutamate[m]', 'glutamate[c]', 'aspartate[m]', 'aspartate[c]'}) 
-
-%makeDotGraph(smallModel, smallSolution, {'malate[c]', 'pyruvate[c]', 'L-lactate[c]', 'pyruvate[m]'})
-%
-%makeDotGraph(smallModel, smallSolution, {'AKG[c]'}) 
-
-%makeDotGraph(smallModel, smallSolution, {'malate[m]','citrate[c]', 'isocitrate[c]', 'OAA[m]','fumarate[m]', 'succinate[m]', 'AKG[m]', 'citrate[c]',  'citrate[m]', 'isocitrate[m]', 'acetyl-CoA[c]', 'acetyl-CoA[m]', 'succinyl-CoA[m]'})
-%makeDotGraph(smallModel, smallSolution, {'OAA[m]', 'OAA[c]', 'AKG[m]', 'AKG[c]', 'malate[c]', 'malate[m]'})
 
 %%
-%Anaplerosis analysis:
-%[smallModel, smallSolution] = gemPress(model, solution.x, true, false);
-%[metNames, percents] = printAnaplerosis(smallModel, smallSolution);
+networkBg = imread('rxnGroups/network.png');
+imshow(networkBg);
 
-
-
+for i = 1:length(groupNames)
+    fprintf('%s\t%2.2f\n',groupNames{i}, results(i,1))
+    XY = coordinates{i};
+    if results(i,1)>1
+        curStr = sprintf('%1.0f\n(%1.0f, %1.0f)', results(i,1), results(i,2), results(i,3));
+    else
+        curStr = sprintf('%1.3f\n(%1.3f, %1.3f)', results(i,1), results(i,2), results(i,3));
+    end
+    text(XY(1),XY(2),curStr, 'Color', secColor, 'FontSize', 10, 'FontName', 'Calibri', 'HorizontalAlignment', 'center')
+end

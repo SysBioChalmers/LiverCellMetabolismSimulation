@@ -1,0 +1,9 @@
+GroupName	RXNS
+Biosynthesis	HMR_4300;HMR_3903;HMR_4194;HMR_4034;HMR_4808;HMR_4406;HMR_4046;HMR_4658
+Deamination of BCAA	HMR_3747;HMR_3777;HMR_6923
+Deamination of other AA	HMR_6725;HMR_6768;HMR_4596
+Biomass	human_proteinPool;metabolitePool;HMR_4324
+Excretion	FreeGlutamateTransport;HMR_4931
+Serine synthesis	HMR_3841
+Glutamine synthesis	HMR_3890
+Exchange Mitochondria	HMR_3829;HMR_5122;HMR_3825
