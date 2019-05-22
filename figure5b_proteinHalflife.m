@@ -53,6 +53,9 @@ for i = 1:length(abundanceId)
 end
 
 %%
+AAConcentration = 5.1;
+polymerizationCost = 4.3;
+
 set(gca,'DefaultTextFontSize',20)
 for i = 1:length(halfLifeId)
     halfLifeAbudnance(i) = abundanceMap(halfLifeId{i});
@@ -64,9 +67,9 @@ massCoverage = sumOfAbundance/totalMass;
 
 degradationRate = log(2)./halfLifeVal;
 
-absoluteAbundances = 5.1 * halfLifeAbudnance .* halfLifeLengths/totalMass; 
+absoluteAbundances = AAConcentration * halfLifeAbudnance .* halfLifeLengths/totalMass; 
 synthesisRate = degradationRate' .* absoluteAbundances;
-proteinCost = 4.3 * synthesisRate;
+proteinCost = polymerizationCost * synthesisRate;
 totalSynthesis = sum(synthesisRate);
 measuredCost = sum(proteinCost);
 totalCost = measuredCost/massCoverage;
@@ -116,16 +119,35 @@ coverage = sum(halfLifeAbudnance);
 
 %%
 %Statistics
-[fluxMets, fluxValues] = loadFluxes('fluxvalues', 'hepg2-6mm-.txt');
-model = setupBiomass(model, 150, 0.5, 0.55);
-model = bindFBA(model, fluxMets, fluxValues(:,3)/1000);
-solution = solveLinMin(model,1)
+figure()
+celltype = 'hepg2';
+conditions = 22;
+conditionName = 'hepG2 22mM';
+fluxProfile = 2;
+
+GAM = 48;
+M = 1;
+model = setupBiomass(model, GAM, M);
+
+flux = zeros(length(model.rxns),length(conditions));
+
+if and(strcmp(celltype, 'hepg2'), fluxProfile == 2)
+    fileName = ['confidenceIntervalls\output\hepg2-' num2str(conditions) '.tsv'];
+    raw = IO(fileName);
+    fluxMets = raw(2:end,1);
+    fluxIn = cell2nummat(raw(2:end,2))/1000;
+else
+    [fluxMets, fluxValues] = loadFluxes('fluxvalues', celltype, conditions);
+    fluxIn = fluxValues(:,fluxProfile)/1000;
+end
+
+model = bindFBA(model, fluxMets, fluxIn);
+
+solution = solveLinMin(model,1);
 rxnsWithFlux = solution.x>0;
 
 allGenes = model.genes';
 fluxGenes = getInvolvedGenes(model, rxnsWithFlux);
-
-fprintf('Not quantified\t%2.2f\n', totalCost-measuredCost)
 
 totalInModel = 0;
 totalInFluxModel = 0;
@@ -146,11 +168,31 @@ for i = 1:length(matchId)
     end
 end
 
-fprintf('Not in model\t%2.2f\n', measuredCost-totalInModel)
-fprintf('In model without flux\t%2.2f\n', totalInModel-totalInFluxModel)
+notQuantified = totalCost-measuredCost;
+notInModel = measuredCost-totalInModel;
+inmodelButNoFlux = totalInModel-totalInFluxModel;
+
+fprintf('Not quantified\t%2.2f\n', notQuantified)
+fprintf('Not in model\t%2.2f\n', notInModel)
+fprintf('In model without flux\t%2.2f\n', inmodelButNoFlux)
 fprintf('With flux\t%2.2f\n', totalInFluxModel)
 %fprintf('Has EC\t%2.2f\n', totalEC)
 
+data = [notInModel, nan;
+        inmodelButNoFlux, nan;
+        totalInFluxModel, nan;
+        notQuantified, nan];
 
-
-
+labels = {'Not in model'
+          'In model without flux'
+          'With flux'
+          'Not quantified'
+          };
+      
+    
+bar(data','stacked', 'linestyle', 'none')
+legend(labels)
+legend boxoff
+ylabel('ATP expenditure [mmol ATP/gdw/h]')
+ylim([0 4])
+xlim([0.25 1.75])
