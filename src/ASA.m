@@ -27,7 +27,8 @@ end
 exceptionVals = fluxes(exceptions);
 
 tresh = 10^-6;
-growthTolerance = 0;
+epsilon = 10^-5;
+growthTolerance = 10^-6;
 preFilter = false;
 dontRelaxMaintainance = true;
 
@@ -71,7 +72,9 @@ if preFilter
     model.c(objRxn) = 1;
 end
 
-
+%We should now be able to relax exchange bounds (not protein limited)
+model.lb(exchangeRxnsIndexes) = -1000;
+model.ub(exchangeRxnsIndexes) = 1000;
 
 if dontRelaxMaintainance
     %Store maintainance information
@@ -108,12 +111,10 @@ end
 %Reset exceptions if any
 model.lb(exceptions) = exceptionLB;
 model.ub(exceptions) = exceptionUB;
-
-
-%We should now be able to relax exchange bonds as well (not protein limited)
+    
+%We should now be able to relax exchange bounds (not protein limited)
 model.lb(exchangeRxnsIndexes) = -1000;
 model.ub(exchangeRxnsIndexes) = 1000;
-    
 
 %Sensitivity analysis
 reactionNumbers = find(toAnalyse);
@@ -136,20 +137,38 @@ for i = 1:length(reactionNumbers)
     curRxn = reactionNumbers(i);    
     for j = 1:length(simulationSteps)
         curAmount = referenceAmounts(i) * simulationSteps(j);
-        model = setParam(model, 'lb', curRxn, curAmount);
-        model = setParam(model, 'ub', curRxn, curAmount);
+        
+        if curAmount < 0
+            model = setParam(model, 'lb', curRxn, curAmount*(1+epsilon));
+            model = setParam(model, 'ub', curRxn, curAmount*(1-epsilon));
+        else
+            model = setParam(model, 'lb', curRxn, curAmount*(1-epsilon));
+            model = setParam(model, 'ub', curRxn, curAmount*(1+epsilon));            
+        end
+
         solution = solveLin(model,1);
+
+        if isempty(solution.x)
+            curAmount
+            constructEquations(model, curRxn)
+           j 
+        end
         growthRates(i,j) = -solution.f;
+          if j == 2
+             solution = solveLinMin(model,1);
+             printFluxesAvlant(model, 1000*solution.x, true) 
+          end
     end
-    
     %Reset bounds
    model.ub = allUbs;
    model.lb = allLbs;
 end
 
+
+
 normalizedGrowth = growthRates/referenceGrowth;
 
-%Obviously no restriction gives maximum growth
+%no restriction obviously gives maximum growth
 normalizedGrowth = [normalizedGrowth ones(length(reactionNumbers),1)];
 xValues = [simulationSteps 1];
 
