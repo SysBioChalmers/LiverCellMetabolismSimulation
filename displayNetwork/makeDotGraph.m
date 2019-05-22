@@ -5,7 +5,12 @@ function makeDotGraph(smallModel, smallSolution, mets)
     graph_to_dot('displayNetwork/test.dot', cMatrix,  labels, rxnStart);
     %Render network with python
     delete('displayNetwork/test.dot.pdf')
-    commandStr = 'python displayNetwork/makePdf.py';
+    filetype = 'PDF';
+
+    filepath = [cd '/displayNetwork/test.dot'];
+    filepath = strrep(filepath, '\', '/');    
+    
+    commandStr = ['python displayNetwork/makePdf.py ' filepath ' ' filetype];
      [status, commandOut] = system(commandStr);
      commandOut
      if status==0

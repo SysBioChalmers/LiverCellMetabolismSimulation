@@ -1,13 +1,17 @@
-function makeMetMetMap(smallModel, smallSolution, mets)
+function involvedRxns = makeMetMetMap(smallModel, smallSolution, mets)
+    tresh = 10^-6;
+    filetype = 'PDF';
+
     labels = modifyMetNames(smallModel);
     metMatch = ismember(labels, mets);
     labels= labels(metMatch);
     modifiedS = smallModel.S(metMatch,:);
-    
-    modifiedS = modifiedS .* repmat(smallSolution', length(mets),1);
+    modifiedS = modifiedS .* repmat(smallSolution', length(labels),1);
     modifiedS = modifiedS * 1000;
-
-    adjMatrix = zeros(length(mets));
+    
+    involvedRxns = sum(abs(modifiedS)>tresh)>=2;
+    
+    adjMatrix = zeros(length(labels));
     for i = 1:size(modifiedS,2)
        producers = find(modifiedS(:,i)<0);
        consumers = find(modifiedS(:,i)>0);
@@ -23,7 +27,10 @@ function makeMetMetMap(smallModel, smallSolution, mets)
     graph_to_dot('displayNetwork/test.dot', adjMatrix, labels);
     %Render network with python
     delete('displayNetwork/test.dot.pdf')
-    commandStr = 'python displayNetwork/makePdf.py';
+    filepath = [cd '/displayNetwork/test.dot'];
+    filepath = strrep(filepath, '\', '/');
+    
+    commandStr = ['python displayNetwork/makePdf.py ' filepath ' ' filetype];
      [status, commandOut] = system(commandStr);
      commandOut
      if status==0

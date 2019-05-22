@@ -17,13 +17,19 @@ essential = {'histidine'
         
 [cMatrix, labels, rxnStart, sourceMets, sinkMets] = generateShortestDistance(model, smallSolution, sources, sinks, banMets, banRxns);
 
-graph_to_dot('displayNetwork/test.dot', cMatrix,  labels, rxnStart, sourceMets, sinkMets, essential) 
+fileName = 'displayNetwork/test.dot';
+
+graph_to_dot(fileName, cMatrix,  labels, rxnStart, sourceMets, sinkMets, essential) 
 
 %Display graph
-delete('displayNetwork/test.dot.pdf')
-commandStr = 'python displayNetwork/makePdf.py';
+fileEnding = 'pdf'; %pdf or eps
+delete(['displayNetwork/test.dot.' fileEnding])
+fileName = [cd '\' fileName];
+fileName = strrep(fileName, '\', '/');
+
+commandStr = ['python displayNetwork/makePdf.py ' fileName ' ' fileEnding];
  [status, commandOut] = system(commandStr);
- commandOut
+ 
  if status==0
      fprintf('pass\n');
  else
