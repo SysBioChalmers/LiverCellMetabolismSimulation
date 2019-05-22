@@ -1,4 +1,4 @@
-function xvals = makeErrorBarPlot(data, errorLB, errorUB, labels, color)
+function allXvals = makeErrorBarPlot(data, errorLB, errorUB, labels, color)
 hold all
 totalWidth = 0.5;
 errorWidth = 1.5*totalWidth/size(data,2);
@@ -6,9 +6,11 @@ errorWidth = 1.5*totalWidth/size(data,2);
 %                    0.9  0.9  0.9];
 minVal = min(min([data errorLB errorUB]));
 maxVal = max(max([data errorLB errorUB]));
+allXvals = zeros(size(data));
 
 for i = 1:size(data,1)    
     xvals = i + linspace(-totalWidth/2,totalWidth/2,size(data,2));
+    allXvals(i,:) = xvals;
     
     for j = 1:size(data,2)
         x = xvals(j);
