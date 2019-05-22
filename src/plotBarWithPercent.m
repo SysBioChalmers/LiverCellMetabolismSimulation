@@ -14,12 +14,12 @@ exMap = [67 116 160
 percentTresh = 100;     
      
 colormap(exMap) 
-barh(results',0.9,'stack', 'LineStyle', 'none');
+bar(results',0.9,'stack', 'LineStyle', 'none');
 l=legend(eqnsOut,'location', 'ne');
 %l.PlotChildren = l.PlotChildren(length(l.PlotChildren):-1:1);
 
-yticks(1:length(conditionName))
-yticklabels(conditionName)
+xticks(1:length(conditionName))
+xticklabels(conditionName)
 
 for i = 1:length(conditionName)
     percentages = results(:,i);
@@ -27,7 +27,7 @@ for i = 1:length(conditionName)
     xvalues = cumsum([0;results(1:(end-1),i)]);
     for j = 1:length(percentages)
         if percentages(j)>percentTresh
-            text(xvalues(j)+0.1, i, sprintf('%2.0f%%', percentages(j)), 'FontSize', 12)
+            text(i, xvalues(j)+0.1, sprintf('%2.0f%%', percentages(j)), 'FontSize', 12)
         end
     end
 end
