@@ -1,0 +1,5 @@
+RNA cellLines
+ensgid Hep G2.C13 and Hep G2.C14
+
+RNA tissues
+ensgid	liver.V108	liver.V110	liver.V111	liver.V348	liver.V349	liver.V350	liver.V351	liver.V358	liver.V362	liver.V363
