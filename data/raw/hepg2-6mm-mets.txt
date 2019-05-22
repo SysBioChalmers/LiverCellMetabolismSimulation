@@ -138,3 +138,4 @@ Pantothenate	0	8.4
 Folate	0	9.1
 Riboflavin	0	1.1
 Sulfate	0	814
+Proline	0	22.6

@@ -132,3 +132,4 @@ Pyruvate	71.5	98.81	11.9288914
 Pyroglutamate	0	0	0
 Albumin	0	1	0
 Albumin	20	2	0
+Proline	0	22.6

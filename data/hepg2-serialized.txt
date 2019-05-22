@@ -1,0 +1,562 @@
+met	time	condition	ID	value
+Lactate	0	0	13	1534.047093
+Lactate	0	0	16	1420.37919
+Lactate	6.5	0	28	1609.489349
+Lactate	6.5	0	31	1610.99186
+Lactate	23.25	0	43	1602.116733
+Lactate	23.25	0	46	1490.07655
+Lactate	30.25	0	55	1340.944968
+Lactate	30.25	0	58	1446.30487
+Lactate	47.5	0	67	980.2686759
+Lactate	47.5	0	70	947.1618771
+Lactate	54.25	0	76	731.7946019
+Lactate	54.25	0	79	739.7858981
+Lactate	71.5	0	82	206.0409611
+Lactate	71.5	0	85	268.6382209
+Lactate	143.5	0	91	71.05802437
+Lactate	0	6	14	1276.296626
+Lactate	0	6	17	1500.151873
+Lactate	6.5	6	29	1831.147615
+Lactate	6.5	6	32	1895.770173
+Lactate	23.25	6	44	3484.626211
+Lactate	23.25	6	47	3231.298136
+Lactate	30.25	6	56	4818.095194
+Lactate	30.25	6	59	5002.815114
+Lactate	47.5	6	68	8351.393116
+Lactate	47.5	6	71	9095.611437
+Lactate	54.25	6	77	8430.090273
+Lactate	54.25	6	80	8072.416033
+Lactate	71.5	6	83	6078.499801
+Lactate	71.5	6	86	5785.756966
+Lactate	143.5	6	92	32.848453
+Lactate	0	22	15	1543.827685
+Lactate	0	22	18	1490.694655
+Lactate	6.5	22	30	2026.209835
+Lactate	6.5	22	33	1902.12067
+Lactate	23.25	22	45	4026.47038
+Lactate	23.25	22	48	3816.142795
+Lactate	30.25	22	57	5425.901725
+Lactate	30.25	22	60	5128.775245
+Lactate	47.5	22	69	9739.8778
+Lactate	47.5	22	72	11176.9357
+Lactate	54.25	22	78	13250.28219
+Lactate	54.25	22	81	13439.79747
+Lactate	71.5	22	84	16121.0725
+Lactate	71.5	22	87	18046.52832
+Lactate	143.5	22	93	19330.53918
+Glucose	0	0	well 1	260.28
+Glucose	0	6	well 2	6362.4
+Glucose	0	22	well 3	21693.615
+Glucose	0	0	well 4	273.535
+Glucose	0	6	well 5	6266
+Glucose	0	22	well 6	21917.745
+Glucose	0	0	well 7	381.985
+Glucose	0	6	well 8	6282.87
+Glucose	0	22	well 9	21188.72
+Glucose	0	0	well 10	204.85
+Glucose	0	6	well 11	6004.515
+Glucose	0	22	well 12	20388.6
+Glucose	0	0	well 13	203.645
+Glucose	0	6	well 14	7075.76
+Glucose	0	22	well 15	20364.5
+Glucose	0	0	well 16	201.235
+Glucose	0	6	well 17	6182.855
+Glucose	0	22	well 18	21782.785
+Glucose	6.5	0	well 4	68.685
+Glucose	6.5	6	well 5	5890.04
+Glucose	6.5	22	well 6	21657.465
+Glucose	6.5	0	well 7	110.86
+Glucose	6.5	6	well 8	5887.63
+Glucose	6.5	22	well 9	20130.73
+Glucose	6.5	0	well 10	51.815
+Glucose	6.5	6	well 11	5664.705
+Glucose	6.5	22	well 12	19335.43
+Glucose	6.5	0	well 13	68.685
+Glucose	6.5	6	well 14	5727.365
+Glucose	6.5	22	well 15	19586.07
+Glucose	6.5	0	well 16	62.66
+Glucose	6.5	6	well 17	5779.18
+Glucose	6.5	22	well 18	20797.095
+Glucose	23.25	0	well 4	34.945
+Glucose	23.25	6	well 5	4769.39
+Glucose	23.25	22	well 6	19284.82
+Glucose	23.25	0	well 7	221.72
+Glucose	23.25	6	well 8	4622.38
+Glucose	23.25	22	well 9	19598.12
+Glucose	23.25	0	well 10	69.89
+Glucose	23.25	6	well 11	4668.17
+Glucose	23.25	22	well 12	17494.19
+Glucose	23.25	0	well 13	30.125
+Glucose	23.25	6	well 14	4239.19
+Glucose	23.25	22	well 15	18943.805
+Glucose	23.25	0	well 16	67.48
+Glucose	23.25	6	well 17	4791.08
+Glucose	23.25	22	well 18	17479.73
+Glucose	30.25	0	well 7	65.07
+Glucose	30.25	6	well 8	3628.255
+Glucose	30.25	22	well 9	17873.765
+Glucose	30.25	0	well 10	33.74
+Glucose	30.25	6	well 11	3683.685
+Glucose	30.25	22	well 12	17853.28
+Glucose	30.25	0	well 13	65.07
+Glucose	30.25	6	well 14	2125.62
+Glucose	30.25	22	well 15	17471.295
+Glucose	30.25	0	well 16	69.89
+Glucose	30.25	6	well 17	3402.92
+Glucose	30.25	22	well 18	18860.66
+Glucose	47.5	0	well 7	66.275
+Glucose	47.5	6	well 8	301.25
+Glucose	47.5	22	well 9	14344.32
+Glucose	47.5	0	well 10	385.6
+Glucose	47.5	6	well 11	344.63
+Glucose	47.5	22	well 12	13911.725
+Glucose	47.5	0	well 13	83.145
+Glucose	47.5	6	well 14	91.58
+Glucose	47.5	22	well 15	14792.58
+Glucose	47.5	0	well 16	71.095
+Glucose	47.5	6	well 17	54.225
+Glucose	47.5	22	well 18	13651.445
+Glucose	54.25	0	well 10	87.965
+Glucose	54.25	6	well 11	189.185
+Glucose	54.25	22	well 12	12618.76
+Glucose	54.25	0	well 13	89.17
+Glucose	54.25	6	well 14	NaN
+Glucose	54.25	22	well 15	10112.36
+Glucose	54.25	0	well 16	93.99
+Glucose	54.25	6	well 17	NaN
+Glucose	54.25	22	well 18	12118.685
+Glucose	71.5	0	well 13	98.81
+Glucose	71.5	6	well 14	93.99
+Glucose	71.5	22	well 15	7507.15
+Glucose	71.5	0	well 16	107.245
+Glucose	71.5	6	well 17	NaN
+Glucose	71.5	22	well 18	7201.08
+Glucose	143.75	0	well 16	95.195
+Glucose	143.75	6	well 17	156.65
+Glucose	143.5	22	well 18	654.315
+Pyruvate	0	0	well 1	67.48
+Pyruvate	0	6	well 2	98.81
+Pyruvate	0	22	well 3	86.76
+Pyruvate	0	0	well 4	83.145
+Pyruvate	0	6	well 5	85.555
+Pyruvate	0	22	well 6	100.015
+Pyruvate	0	0	well 7	83.145
+Pyruvate	0	6	well 8	90.375
+Pyruvate	0	22	well 9	103.63
+Pyruvate	0	0	well 10	73.505
+Pyruvate	0	6	well 11	78.325
+Pyruvate	0	22	well 12	84.35
+Pyruvate	0	0	well 13	67.48
+Pyruvate	0	6	well 14	97.605
+Pyruvate	0	22	well 15	93.99
+Pyruvate	0	0	well 16	75.915
+Pyruvate	0	6	well 17	84.35
+Pyruvate	0	22	well 18	95.195
+Pyruvate	6.5	0	well 4	384.395
+Pyruvate	6.5	6	well 5	448.26
+Pyruvate	6.5	22	well 6	442.235
+Pyruvate	6.5	0	well 7	397.65
+Pyruvate	6.5	6	well 8	448.26
+Pyruvate	6.5	22	well 9	437.415
+Pyruvate	6.5	0	well 10	360.295
+Pyruvate	6.5	6	well 11	407.29
+Pyruvate	6.5	22	well 12	416.93
+Pyruvate	6.5	0	well 13	372.345
+Pyruvate	6.5	6	well 14	420.545
+Pyruvate	6.5	22	well 15	407.29
+Pyruvate	6.5	0	well 16	366.32
+Pyruvate	6.5	6	well 17	451.875
+Pyruvate	6.5	22	well 18	448.26
+Pyruvate	23.25	0	well 4	443.44
+Pyruvate	23.25	6	well 5	870.01
+Pyruvate	23.25	22	well 6	800.12
+Pyruvate	23.25	0	well 7	400.06
+Pyruvate	23.25	6	well 8	844.705
+Pyruvate	23.25	22	well 9	885.675
+Pyruvate	23.25	0	well 10	383.19
+Pyruvate	23.25	6	well 11	859.165
+Pyruvate	23.25	22	well 12	579.605
+Pyruvate	23.25	0	well 13	416.93
+Pyruvate	23.25	6	well 14	690.465
+Pyruvate	23.25	22	well 15	842.295
+Pyruvate	23.25	0	well 16	341.015
+Pyruvate	23.25	6	well 17	902.545
+Pyruvate	23.25	22	well 18	649.495
+Pyruvate	30.25	0	well 7	389.215
+Pyruvate	30.25	6	well 8	1014.61
+Pyruvate	30.25	22	well 9	959.18
+Pyruvate	30.25	0	well 10	422.955
+Pyruvate	30.25	6	well 11	1049.555
+Pyruvate	30.25	22	well 12	1013.405
+Pyruvate	30.25	0	well 13	395.24
+Pyruvate	30.25	6	well 14	608.525
+Pyruvate	30.25	22	well 15	967.615
+Pyruvate	30.25	0	well 16	385.6
+Pyruvate	30.25	6	well 17	1031.48
+Pyruvate	30.25	22	well 18	1067.63
+Pyruvate	47.5	0	well 7	262.69
+Pyruvate	47.5	6	well 8	1170.055
+Pyruvate	47.5	22	well 9	1325.5
+Pyruvate	47.5	0	well 10	307.275
+Pyruvate	47.5	6	well 11	1338.755
+Pyruvate	47.5	22	well 12	1353.215
+Pyruvate	47.5	0	well 13	273.535
+Pyruvate	47.5	6	well 14	1071.245
+Pyruvate	47.5	22	well 15	1430.335
+Pyruvate	47.5	0	well 16	280.765
+Pyruvate	47.5	6	well 17	1049.555
+Pyruvate	47.5	22	well 18	1345.985
+Pyruvate	54.25	0	well 10	227.745
+Pyruvate	54.25	6	well 11	949.54
+Pyruvate	54.25	22	well 12	1374.905
+Pyruvate	54.25	0	well 13	200.03
+Pyruvate	54.25	6	well 14	594.065
+Pyruvate	54.25	22	well 15	1053.17
+Pyruvate	54.25	0	well 16	201.235
+Pyruvate	54.25	6	well 17	849.525
+Pyruvate	54.25	22	well 18	1341.165
+Pyruvate	71.5	0	well 13	90.375
+Pyruvate	71.5	6	well 14	757.945
+Pyruvate	71.5	22	well 15	1144.75
+Pyruvate	71.5	0	well 16	107.245
+Pyruvate	71.5	6	well 17	736.255
+Pyruvate	71.5	22	well 18	1082.09
+Pyruvate	143.75	0	well 16	81.94
+Pyruvate	143.75	6	well 17	274.74
+Pyruvate	143.5	22	well 18	426.57
+Taurine	0	0	1-16	10.1807
+Taurine	23.25	0	4-46	9.3551
+Taurine	47.5	0	7-70	8.4444
+Taurine	78.25	0	10-88	7.9344
+Taurine	143.75	0	13-91	3.3133
+Taurine	0	6	2-17	9.8632
+Taurine	23.25	6	5-47	8.5176
+Taurine	47.5	6	8-71	6.8414
+Taurine	78.25	6	11-89	3.3279
+Taurine	143.75	6	14-92	22.0629
+Taurine	0	22	3-18	9.2642
+Taurine	23.25	22	6-48	8.8494
+Taurine	47.5	22	9-72	7.4202
+Taurine	78.25	22	12-90	5.4374
+Taurine	143.75	22	15-93	48.1644
+Aspartic acid	0	0	1-16	13.6194
+Aspartic acid	23.25	0	4-46	25.76
+Aspartic acid	47.5	0	7-70	39.6189
+Aspartic acid	78.25	0	10-88	26.7569
+Aspartic acid	143.75	0	13-91	17.8858
+Aspartic acid	0	6	2-17	13.4369
+Aspartic acid	23.25	6	5-47	21.2321
+Aspartic acid	47.5	6	8-71	27.3365
+Aspartic acid	78.25	6	11-89	22.4817
+Aspartic acid	143.75	6	14-92	21.9506
+Aspartic acid	0	22	3-18	NaN
+Aspartic acid	23.25	22	6-48	21.4849
+Aspartic acid	47.5	22	9-72	26.8646
+Aspartic acid	78.25	22	12-90	15.9099
+Aspartic acid	143.75	22	15-93	20.246
+Threonine	0	0	1-16	732.9756
+Threonine	23.25	0	4-46	677.9641
+Threonine	47.5	0	7-70	647.5991
+Threonine	78.25	0	10-88	661.7886
+Threonine	143.75	0	13-91	733.1671
+Threonine	0	6	2-17	727.8681
+Threonine	23.25	6	5-47	644.1552
+Threonine	47.5	6	8-71	604.9975
+Threonine	78.25	6	11-89	493.2942
+Threonine	143.75	6	14-92	528.5776
+Threonine	0	22	3-18	696.7656
+Threonine	23.25	22	6-48	679.8405
+Threonine	47.5	22	9-72	608.0441
+Threonine	78.25	22	12-90	491.3665
+Threonine	143.75	22	15-93	458.4927
+Serine	0	0	1-16	380.6859
+Serine	23.25	0	4-46	291.9269
+Serine	47.5	0	7-70	261.2216
+Serine	78.25	0	10-88	138.95
+Serine	143.75	0	13-91	44.3684
+Serine	0	6	2-17	378.4756
+Serine	23.25	6	5-47	269.0365
+Serine	47.5	6	8-71	208.3676
+Serine	78.25	6	11-89	237.2429
+Serine	143.75	6	14-92	44.8235
+Serine	0	22	3-18	359.6072
+Serine	23.25	22	6-48	256.5057
+Serine	47.5	22	9-72	211.9052
+Serine	78.25	22	12-90	130.1062
+Serine	143.75	22	15-93	36.6591
+Asparagine	0	0	1-16	0.5677
+Asparagine	23.25	0	4-46	3.0056
+Asparagine	47.5	0	7-70	10.9035
+Asparagine	78.25	0	10-88	1.799
+Asparagine	143.75	0	13-91	15.4304
+Asparagine	0	6	2-17	0.3807
+Asparagine	23.25	6	5-47	1.1003
+Asparagine	47.5	6	8-71	0.7165
+Asparagine	78.25	6	11-89	0.7234
+Asparagine	143.75	6	14-92	20.0348
+Asparagine	0	22	3-18	0.1958
+Asparagine	23.25	22	6-48	1.1417
+Asparagine	47.5	22	9-72	0.4436
+Asparagine	78.25	22	12-90	0.1868
+Asparagine	143.75	22	15-93	1.4036
+Glutamic acid	0	0	1-16	89.5032
+Glutamic acid	23.25	0	4-46	228.2609
+Glutamic acid	47.5	0	7-70	447.6887
+Glutamic acid	78.25	0	10-88	421.6781
+Glutamic acid	143.75	0	13-91	291.6187
+Glutamic acid	0	6	2-17	88.931
+Glutamic acid	23.25	6	5-47	218.6031
+Glutamic acid	47.5	6	8-71	391.5621
+Glutamic acid	78.25	6	11-89	593.7632
+Glutamic acid	143.75	6	14-92	340.3988
+Glutamic acid	0	22	3-18	85.8358
+Glutamic acid	23.25	22	6-48	230.0903
+Glutamic acid	47.5	22	9-72	390.3207
+Glutamic acid	78.25	22	12-90	442.1657
+Glutamic acid	143.75	22	15-93	670.6153
+Glutamine	0	0	1-16	1684.4297
+Glutamine	23.25	0	4-46	921.4737
+Glutamine	47.5	0	7-70	54.0743
+Glutamine	78.25	0	10-88	3.1675
+Glutamine	143.75	0	13-91	1.9604
+Glutamine	0	6	2-17	1710.6993
+Glutamine	23.25	6	5-47	921.2789
+Glutamine	47.5	6	8-71	216.0954
+Glutamine	78.25	6	11-89	27.5128
+Glutamine	143.75	6	14-92	1.0008
+Glutamine	0	22	3-18	1627.6312
+Glutamine	23.25	22	6-48	988.2149
+Glutamine	47.5	22	9-72	240.6739
+Glutamine	78.25	22	12-90	43.4456
+Glutamine	143.75	22	15-93	12.8809
+Glycine	0	0	1-16	396.239
+Glycine	23.25	0	4-46	452.2252
+Glycine	47.5	0	7-70	622.2819
+Glycine	78.25	0	10-88	1022.2788
+Glycine	143.75	0	13-91	1339.2296
+Glycine	0	6	2-17	393.9561
+Glycine	23.25	6	5-47	396.6003
+Glycine	47.5	6	8-71	442.2986
+Glycine	78.25	6	11-89	533.8474
+Glycine	143.75	6	14-92	1228.045
+Glycine	0	22	3-18	375.2425
+Glycine	23.25	22	6-48	419.7008
+Glycine	47.5	22	9-72	420.8636
+Glycine	78.25	22	12-90	307.3895
+Glycine	143.75	22	15-93	265.0404
+Alanine	0	0	1-16	99.611
+Alanine	23.25	0	4-46	171.1694
+Alanine	47.5	0	7-70	134.9547
+Alanine	78.25	0	10-88	3.9647
+Alanine	143.75	0	13-91	5.6084
+Alanine	0	6	2-17	101.5143
+Alanine	23.25	6	5-47	277.2352
+Alanine	47.5	6	8-71	546.3139
+Alanine	78.25	6	11-89	186.4986
+Alanine	143.75	6	14-92	4.1282
+Alanine	0	22	3-18	95.8031
+Alanine	23.25	22	6-48	279.618
+Alanine	47.5	22	9-72	525.7481
+Alanine	78.25	22	12-90	220.246
+Alanine	143.75	22	15-93	74.0526
+Valine	0	0	1-16	687.6505
+Valine	23.25	0	4-46	580.5883
+Valine	47.5	0	7-70	473
+Valine	78.25	0	10-88	364.602
+Valine	143.75	0	13-91	199.0469
+Valine	0	6	2-17	682.607
+Valine	23.25	6	5-47	546.5355
+Valine	47.5	6	8-71	431.0286
+Valine	78.25	6	11-89	173.5152
+Valine	143.75	6	14-92	12.6158
+Valine	0	22	3-18	651.9628
+Valine	23.25	22	6-48	582.9848
+Valine	47.5	22	9-72	440.1588
+Valine	78.25	22	12-90	188.4942
+Valine	143.75	22	15-93	60.0643
+Cystine	0	0	1-16	162.9779
+Cystine	23.25	0	4-46	99.7602
+Cystine	47.5	0	7-70	28.1632
+Cystine	78.25	0	10-88	12.3389
+Cystine	143.75	0	13-91	9.3029
+Cystine	0	6	2-17	160.2093
+Cystine	23.25	6	5-47	87.8479
+Cystine	47.5	6	8-71	25.3963
+Cystine	78.25	6	11-89	2.2704
+Cystine	143.75	6	14-92	3.2677
+Cystine	0	22	3-18	153.0764
+Cystine	23.25	22	6-48	94.0822
+Cystine	47.5	22	9-72	26.4067
+Cystine	78.25	22	12-90	3.0204
+Cystine	143.75	22	15-93	1.8433
+Methionine	0	0	1-16	150.9868
+Methionine	23.25	0	4-46	133.212
+Methionine	47.5	0	7-70	113.2069
+Methionine	78.25	0	10-88	95.4116
+Methionine	143.75	0	13-91	87.6464
+Methionine	0	6	2-17	149.8856
+Methionine	23.25	6	5-47	124.8206
+Methionine	47.5	6	8-71	96.5167
+Methionine	78.25	6	11-89	45.5323
+Methionine	143.75	6	14-92	22.7555
+Methionine	0	22	3-18	143.7462
+Methionine	23.25	22	6-48	133.1767
+Methionine	47.5	22	9-72	99.1895
+Methionine	78.25	22	12-90	45.4362
+Methionine	143.75	22	15-93	21.8699
+Iso-leucine	0	0	1-16	703.74
+Iso-leucine	23.25	0	4-46	510.359
+Iso-leucine	47.5	0	7-70	381.9939
+Iso-leucine	78.25	0	10-88	275.7557
+Iso-leucine	143.75	0	13-91	119.1116
+Iso-leucine	0	6	2-17	697.9167
+Iso-leucine	23.25	6	5-47	486.5653
+Iso-leucine	47.5	6	8-71	359.9437
+Iso-leucine	78.25	6	11-89	122.4195
+Iso-leucine	143.75	6	14-92	7.4155
+Iso-leucine	0	22	3-18	667.8349
+Iso-leucine	23.25	22	6-48	522.0996
+Iso-leucine	47.5	22	9-72	369.7776
+Iso-leucine	78.25	22	12-90	139.1587
+Iso-leucine	143.75	22	15-93	49.023
+Leucine	0	0	1-16	675.879
+Leucine	23.25	0	4-46	500.9583
+Leucine	47.5	0	7-70	362.1059
+Leucine	78.25	0	10-88	245.0172
+Leucine	143.75	0	13-91	109.0597
+Leucine	0	6	2-17	673.8586
+Leucine	23.25	6	5-47	471.6263
+Leucine	47.5	6	8-71	320.3925
+Leucine	78.25	6	11-89	85.8279
+Leucine	143.75	6	14-92	4.5655
+Leucine	0	22	3-18	644.5804
+Leucine	23.25	22	6-48	505.2324
+Leucine	47.5	22	9-72	329.9112
+Leucine	78.25	22	12-90	99.7179
+Leucine	143.75	22	15-93	31.4141
+Tyrosine	0	0	1-16	341.1117
+Tyrosine	23.25	0	4-46	329.0714
+Tyrosine	47.5	0	7-70	339.8101
+Tyrosine	78.25	0	10-88	385.4504
+Tyrosine	143.75	0	13-91	360.7809
+Tyrosine	0	6	2-17	341.0458
+Tyrosine	23.25	6	5-47	316.5417
+Tyrosine	47.5	6	8-71	343.3313
+Tyrosine	78.25	6	11-89	361.9037
+Tyrosine	143.75	6	14-92	278.0419
+Tyrosine	0	22	3-18	326.0552
+Tyrosine	23.25	22	6-48	333.5043
+Tyrosine	47.5	22	9-72	342.3413
+Tyrosine	78.25	22	12-90	356.0293
+Tyrosine	143.75	22	15-93	227.2412
+Phenylalanine	0	0	1-16	365.2238
+Phenylalanine	23.25	0	4-46	318.1543
+Phenylalanine	47.5	0	7-70	259.8835
+Phenylalanine	78.25	0	10-88	170.8241
+Phenylalanine	143.75	0	13-91	140.9912
+Phenylalanine	0	6	2-17	362.1475
+Phenylalanine	23.25	6	5-47	296.1883
+Phenylalanine	47.5	6	8-71	206.9931
+Phenylalanine	78.25	6	11-89	13.4258
+Phenylalanine	143.75	6	14-92	22.4192
+Phenylalanine	0	22	3-18	348.0481
+Phenylalanine	23.25	22	6-48	315.951
+Phenylalanine	47.5	22	9-72	216.7817
+Phenylalanine	78.25	22	12-90	24.6703
+Phenylalanine	143.75	22	15-93	4.6006
+Ornithine	0	0	1-16	21.2333
+Ornithine	23.25	0	4-46	34.8739
+Ornithine	47.5	0	7-70	60.5219
+Ornithine	78.25	0	10-88	77.9394
+Ornithine	143.75	0	13-91	32.318
+Ornithine	0	6	2-17	20.2352
+Ornithine	23.25	6	5-47	33.0794
+Ornithine	47.5	6	8-71	53.7486
+Ornithine	78.25	6	11-89	52.1555
+Ornithine	143.75	6	14-92	12.3108
+Ornithine	0	22	3-18	19.2125
+Ornithine	23.25	22	6-48	34.4005
+Ornithine	47.5	22	9-72	52.8663
+Ornithine	78.25	22	12-90	46.7029
+Ornithine	143.75	22	15-93	9.3696
+Lysine	0	0	1-16	696.2848
+Lysine	23.25	0	4-46	629.3763
+Lysine	47.5	0	7-70	577.9418
+Lysine	78.25	0	10-88	584.4462
+Lysine	143.75	0	13-91	662.6358
+Lysine	0	6	2-17	690.1495
+Lysine	23.25	6	5-47	593.2349
+Lysine	47.5	6	8-71	517.6346
+Lysine	78.25	6	11-89	253.6406
+Lysine	143.75	6	14-92	123.9453
+Lysine	0	22	3-18	658.898
+Lysine	23.25	22	6-48	628.6294
+Lysine	47.5	22	9-72	527.9209
+Lysine	78.25	22	12-90	295.9309
+Lysine	143.75	22	15-93	102.9468
+Histidine	0	0	1-16	180.4602
+Histidine	23.25	0	4-46	160.4519
+Histidine	47.5	0	7-70	146.2743
+Histidine	78.25	0	10-88	143.4049
+Histidine	143.75	0	13-91	163.7249
+Histidine	0	6	2-17	177.3049
+Histidine	23.25	6	5-47	150.719
+Histidine	47.5	6	8-71	129.3153
+Histidine	78.25	6	11-89	85.1158
+Histidine	143.75	6	14-92	93.2939
+Histidine	0	22	3-18	169.7171
+Histidine	23.25	22	6-48	159.9232
+Histidine	47.5	22	9-72	130.8706
+Histidine	78.25	22	12-90	82.7732
+Histidine	143.75	22	15-93	69.5736
+Arginine	0	0	1-16	335.0133
+Arginine	23.25	0	4-46	277.4295
+Arginine	47.5	0	7-70	207.1983
+Arginine	78.25	0	10-88	111.5341
+Arginine	143.75	0	13-91	25.4222
+Arginine	0	6	2-17	330.3411
+Arginine	23.25	6	5-47	260.0258
+Arginine	47.5	6	8-71	169.4179
+Arginine	78.25	6	11-89	21.6963
+Arginine	143.75	6	14-92	8.7402
+Arginine	0	22	3-18	318.3322
+Arginine	23.25	22	6-48	276.1226
+Arginine	47.5	22	9-72	174.1671
+Arginine	78.25	22	12-90	22.1184
+Arginine	143.75	22	15-93	4.4079
+Tryptophan	0	0	DMEM+FBS	70
+Urea	0	0	DMEM+FBS	0
+Pyroglutamate	0	0	DMEM+FBS	0
+Albumin	0	0	NaN	1
+Phosphate	0	0	DMEM+FBS	815
+Choline	0	0	DMEM+FBS	28.6
+Niacinamide	0	0	DMEM+FBS	32.8
+Pantothenate	0	0	DMEM+FBS	8.4
+Folate	0	0	DMEM+FBS	9.1
+Riboflavin	0	0	DMEM+FBS	1.1
+Sulfate	0	0	DMEM+FBS	814
+Proline	0	0	DMEM+FBS	22.6
+Tryptophan	0	6	DMEM+FBS	70
+Urea	0	6	DMEM+FBS	0
+Pyroglutamate	0	6	DMEM+FBS	0
+Albumin	0	6	NaN	1
+Phosphate	0	6	DMEM+FBS	815
+Choline	0	6	DMEM+FBS	28.6
+Niacinamide	0	6	DMEM+FBS	32.8
+Pantothenate	0	6	DMEM+FBS	8.4
+Folate	0	6	DMEM+FBS	9.1
+Riboflavin	0	6	DMEM+FBS	1.1
+Sulfate	0	6	DMEM+FBS	814
+Proline	0	6	DMEM+FBS	22.6
+Tryptophan	0	22	DMEM+FBS	70
+Urea	0	22	DMEM+FBS	0
+Pyroglutamate	0	22	DMEM+FBS	0
+Albumin	0	22	NaN	1
+Phosphate	0	22	DMEM+FBS	815
+Choline	0	22	DMEM+FBS	28.6
+Niacinamide	0	22	DMEM+FBS	32.8
+Pantothenate	0	22	DMEM+FBS	8.4
+Folate	0	22	DMEM+FBS	9.1
+Riboflavin	0	22	DMEM+FBS	1.1
+Sulfate	0	22	DMEM+FBS	814
+Proline	0	22	DMEM+FBS	22.6

@@ -131,3 +131,4 @@ Pyruvate	54.25	1256.413333	176.8204918
 Pyruvate	71.5	1113.42	44.30731091
 Albumin	0	1	0
 Albumin	20	2	0
+Proline	0	22.6
