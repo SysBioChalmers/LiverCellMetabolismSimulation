@@ -1,11 +1,14 @@
 function [smallModel, smallSolution] = gemPress(model, fullSolution, rmComps, rmDuplicates)
-% simplifyFluxResult
+% gemPress
 % Simplifies the model by joining linear pathways to lumped reactions
 %
 %   model               a model struct
 %   fullSolution        a vector with fluxes
 %   rmComps             boolean, remove compartments?
-%   rmDuplicates        boolean, remove duplicated reactions
+%   rmDuplicates        boolean, remove duplicated reactions?
+%
+%   smallModel          reduced model
+%   smallSolution       reduced flux vector
 %
 %   Avlant Nilsson, 2016-05-17
 %
@@ -83,6 +86,9 @@ exchangeMets = find(sum(abs(newModel.S(:,exchangeRxns)),2));
     if rmDuplicates
         [newModel, fullSolution] = removeDuplicates(newModel, fullSolution);
     end
+    
+    %smallSolution = filterLowFlux(newModel, fullSolution, 0.01);
+
 end
 
 
