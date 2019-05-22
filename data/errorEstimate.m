@@ -1,3 +1,4 @@
+close all
 cellLine = {
     'hepg2'
     'hepg2'
@@ -8,12 +9,12 @@ cellLine = {
     };
 
 condition = {
-    '0mm'
-    '6mm'
-    '22mm' 
-    '0mm'
-    '6mm'
-    '22mm' 
+    '0'
+    '6'
+    '22' 
+    '0'
+    '6'
+    '22' 
     };
 
 metabolites = {'alanine[s]'
@@ -71,3 +72,12 @@ set(gca,'xtick', xvalues)
 set(gca,'xticklabel', metabolites)
 set(gca, 'XTickLabelRotation', 45);
 
+figure()
+hold all
+scatter(average, standardDev, 'fill')
+dlm = fitlm(average,standardDev,'Intercept',false)
+k = dlm.Coefficients.Estimate;
+xvals = linspace(0, 1800);
+plot(xvals, k*xvals, 'k--')
+xlabel('concentration [mM]')
+ylabel('std')
