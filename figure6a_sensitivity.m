@@ -3,9 +3,24 @@ load('model/genericHuman2')
 addpath('src')
 addpath('sensitivity analysis')
 
-[fluxMets, fluxValues] = loadFluxes('fluxvalues', 'hepg2-6mm-.txt');
-model = setupBiomass(model, 150, 0.5);
-model = bindFBA(model, fluxMets, fluxValues(:,2)/1000);
+cellType = 'hepg2';
+condition = '22';
+setErrorBounds = false;
+
+if strcmp(cellType, 'hepg2')
+    fileName = ['confidenceIntervalls\output\hepg2-' num2str(condition) '.tsv'];
+    raw = IO(fileName);
+    fluxMets = raw(2:end,1);
+    fluxValues = cell2nummat(raw(2:end,2));
+    fluxData = fluxValues/1000;
+    fluxError = cell2nummat(raw(2:end,3:4));
+else
+    [fluxMets, fluxValues] = loadFluxes('fluxvalues', cellType, condition);
+    fluxData = fluxValues(:,2)/1000;
+end
+
+model = setupBiomass(model, 48, 1);
+model = bindFBA(model, fluxMets, fluxData);
 
 %%%%%%%%%%%%%%%%%%%%
 %Relax upper bound for uptake reactions to allow sub maximal flux which may
@@ -35,10 +50,10 @@ toAnalyse = abs(fluxes)>tresh; %only reactions with flux
 toAnalyse(id) = false; 
 
 %Ignore transport reactions and artificial reactions
-banedSubs = {'Artificial', 'Putative Reactions', 'Artificall reactions', 'Transport, mitochondrial', 'Transport, extracellular', 'Transport, nuclear', 'Transport, peroxisomal', 'Transport, lysosomal', 'Transport, lysosome to ER', 'Transport, Golgi apparatus'};
+banedSubs = {'Artificial', 'Putative Reactions', 'Artificall reactions', 'Artificial reactions', 'Transport, mitochondrial', 'Transport, extracellular', 'Transport, nuclear', 'Transport, peroxisomal', 'Transport, lysosomal', 'Transport, lysosome to ER', 'Transport, Golgi apparatus'};
 toAnalyse(ismember(model.subSystems, banedSubs)) = false; 
 
-%Fix objective function 
+%Constrain objective function 
 objRxn = find(model.c);
 model = setParam(model, 'lb', objRxn, fluxes(objRxn)*(1-growthTolerance));
 model = setParam(model, 'ub', objRxn, fluxes(objRxn));
@@ -162,10 +177,16 @@ hold on
 color = [93 155 211]/256;
 
 subSysLabel = [subSys];
+countSensitive = 0;
+countTotal = 0;
+tresh = 0.5;
+
 for i = 1:length(meanofData)
     barh(i, meanofData(i), 'FaceColor', color,'LineStyle','none');
     nrOfRxns = num2str(length(data{i}));
     subSysLabel{i} = [subSysLabel{i} ' (' nrOfRxns ')'];
+    countSensitive = countSensitive + sum(data{i}>tresh);
+    countTotal = countTotal + length(data{i});
 end
 
 yticks(1:length(meanofData))
@@ -174,4 +195,9 @@ yticklabels(subSysLabel)
 cordinates = beswarmPlot(data, 0.05);
 xlabel('sensitivity')
 xlim([0 1.05])
+plot([1 1], [0 length(meanofData)+1], 'k-')
 
+plot(tresh * [1 1], [0 length(meanofData)+1], 'k-')
+
+countSensitive
+countTotal
