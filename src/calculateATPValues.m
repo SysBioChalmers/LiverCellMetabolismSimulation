@@ -18,7 +18,7 @@ glycolysisCost = sumRxns(model,flux, {'HMR_4394'; 'HMR_4379'}, [1;1]);
 atpData = atpData - glycolysisCost;
 
 
-eqnsOut = {'GAM', 'Protein synthesis', 'Maintainance', 'Other sinks', 'Secreted proteins'};
+eqnsOut = {'maintainance', 'protein synthesis', 'other sinks', 'GAM', 'secreted proteins'};
 
 GAC = sumRxns(model,flux, {'human_GrowthMaintainance'}, [1]);
 aminoacids = sumRxns(model,flux, {'human_proteinPool'}, [4.3]);
@@ -32,10 +32,10 @@ if other<0
     other = 0;
 end
 
-outflux = [ GAM;
+outflux = [ maint;
             aminoacids;
-            maint
             other
+            GAM;
             prot
            ];
 end
@@ -49,41 +49,60 @@ atpData = totalATP(model, flux);
 glycolysisCost = sumRxns(model,flux, {'HMR_4394'; 'HMR_4379'}, [1;1]);
 atpData = atpData - glycolysisCost;
 
-eqnsOut = {'Glycolysis', 'Pyruvate->TCA', 'Glutamine->TCA', 'Other sources'};
+%eqnsOut = {'oxidation (PYR)', 'oxidation (GLU)', 'glycolysis', 'other'};
+%glycolysis = sumRxns(model,flux, {'HMR_4358'; 'HMR_4368'; 'HMR_4379'; 'HMR_4394'}, [1;1;-1;-1]);
+%TCAPyruvate = sumRxns(model,flux, {'HMR_3957', 'HMR_3958'}, [1 1])
+%%TCAglutamate = sumRxns(model,flux, {'HMR_3802', 'HMR_3804', 'HMR_4109', 'HMR_3827', 'HMR_3807', 'HMR_4115', 'HMR_4852'}, [-1 -1 -1 -1 -1 1 1]);
+%TCAglutamate = sumRxns(model,flux, {'HMR_5297', 'HMR_3957', 'HMR_3958'}, [1 -1 -1]);
+
+%if TCAglutamate<0
+%    TCAglutamate = 0; 
+% end
+% OXPHOS = sumRxns(model,flux, {'HMR_6328'}, [1]);
+% 
+% TCA1ratio = TCAPyruvate/(TCAPyruvate + TCAglutamate);
+% TCA2ratio = 1-TCA1ratio;
+% 
+% TCA1 = TCA1ratio * OXPHOS;
+% TCA2 = TCA2ratio * OXPHOS;
 
 glycolysis = sumRxns(model,flux, {'HMR_4358'; 'HMR_4368'; 'HMR_4379'; 'HMR_4394'}, [1;1;-1;-1]);
-TCAPyruvate = sumRxns(model,flux, {'HMR_3957', 'HMR_3958'}, [1 1]);
-TCAglutamate = sumRxns(model,flux, {'HMR_3802', 'HMR_3804', 'HMR_4109', 'HMR_3827', 'HMR_3807', 'HMR_4115', 'HMR_4852'}, [-1 -1 -1 -1 -1 1 1]);
+OXPHOS = sumRxns(model,flux, {'HMR_6916'}, [1]);
+TCA = sumRxns(model,flux, {'HMR_4147', 'HMR_4152'}, [-1 1]);
+MITATP = sumRxns(model,flux, {'HMR_6328'}, [1 1]);
 
+OXPHOSratio = OXPHOS/(OXPHOS + TCA);
+TCAratio = 1-OXPHOSratio;
 
-if TCAglutamate<0
-   TCAglutamate = 0; 
-end
-OXPHOS = sumRxns(model,flux, {'HMR_6328'}, [1]);
+OXPHOS = OXPHOSratio * MITATP;
+TCA = TCAratio * MITATP;
 
-TCA1ratio = TCAPyruvate/(TCAPyruvate + TCAglutamate)
-TCA2ratio = 1-TCA1ratio
+eqnsOut = {'OXPHOS', 'TCA', 'glycolysis', 'other'};
 
-TCA1 = TCA1ratio * OXPHOS;
-TCA2 = TCA2ratio * OXPHOS;
 
 if glycolysis<0
    glycolysis = 0; 
 end
 
+%other = atpData - glycolysis - OXPHOS;
 
-other = atpData -glycolysis - TCA1 - TCA2;
+% if other<0
+%     other = 0;
+% end
 
-if other<0
-    other = 0;
-end
-
-
-outflux = [glycolysis;
-            TCA1
-            TCA2
-            other
+outflux = [      
+            OXPHOS
+            TCA
+            glycolysis
+            %other
            ];
+
+% outflux = [      
+%             TCA1
+%             TCA2
+%             glycolysis
+%             other
+%            ];
 end
 
 function value = sumRxns(model, flux, rxns, stochiometry)
@@ -117,7 +136,7 @@ function printATPBalance(model, stochiometry, flux)
     rxns = rxns(indx);
 
     %print fluxes:
-    printFlux = false;
+    printFlux = true;
     if printFlux
         for i = 1:length(eqns)
             fprintf('%s\t%s\t%2.5f\n', rxns{i}, eqns{i}, atpFlux(i));
