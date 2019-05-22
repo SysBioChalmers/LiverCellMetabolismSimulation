@@ -4,3 +4,6 @@
 *.docx
 *.zip
 displayNetwork/test.dot
+displayNetwork/test.dot.eps
+displayNetwork/test.dot.eps
+displayNetwork/test.dot.pdf
