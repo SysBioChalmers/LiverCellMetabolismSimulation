@@ -11,6 +11,8 @@ massPerMCell = massPerCell*10^6;
 color = [93 155 211
          215 86 40
          238 178 32]/256;
+     
+fixGrowth = false;
 
 %leaving out  'Asparagine' 'Butyrate', 'Taurine', 'Citrulline' 
 metabolitesToPlot = {'Glucose' 'Lactate' 'Pyruvate' 'Alanine' 'Arginine' 'Aspartic acid' 'Cystine' 'Glutamic acid' 'Glutamine' 'Glycine' 'Histidine' 'Iso-leucine' 'Leucine' 'Lysine' 'Methionine' 'Ornithine' 'Phenylalanine' 'Proline' 'Serine' 'Threonine' 'Tryptophan' 'Tyrosine' 'Valine'};
@@ -31,6 +33,11 @@ x0 = estimateInitialX(dataX, dataY, tvals);
 modelfun = @(x,y) fitFunction(x, y, tvals, volData(:,2));
 [beta, fval] = mLE(dataX, dataY, modelfun, x0, NaN(1,3));
 addConstraints(1,3) = beta(1,3);
+
+%Constrain growht
+if fixGrowth
+    addConstraints(1,2) = beta(1,2);
+end
 
 %Estimating and constraining STD for each metabolite in turn using the data
 disp('Estimating STD of each metabolite...')
