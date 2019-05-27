@@ -34,7 +34,7 @@ curencyMets = {'H2O', 'CO2', 'Pi' 'ubiquinol', 'GSH', 'UDP', 'UTP', 'ATP', 'AMP'
 poolRxns = {'human_proteinPool', 'metabolitePool'};
 
 %Filter out fluxes with minor contribution to the pool
-%smallSolution = filterMets(smallModel, smallSolution, [sources sinks], 0.1);
+smallSolution = filterMets(smallModel, smallSolution, [sources sinks], 0.1);
 
 
 linkAA(smallModel, smallSolution, sources, sinks, curencyMets, poolRxns)
