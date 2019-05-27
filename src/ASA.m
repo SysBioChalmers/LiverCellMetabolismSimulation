@@ -147,17 +147,18 @@ for i = 1:length(reactionNumbers)
         end
 
         solution = solveLin(model,1);
+        growthRates(i,j) = -solution.f;        
 
-        if isempty(solution.x)
-            curAmount
-            constructEquations(model, curRxn)
-           j 
-        end
-        growthRates(i,j) = -solution.f;
-          if j == 2
-             solution = solveLinMin(model,1);
-             printFluxesAvlant(model, 1000*solution.x, true) 
-          end
+%         if isempty(solution.x)
+%             curAmount
+%             constructEquations(model, curRxn)
+%            j 
+%         end
+
+%           if j == 2
+%              solution = solveLinMin(model,1);
+%              printFluxesAvlant(model, 1000*solution.x, true) 
+%           end
     end
     %Reset bounds
    model.ub = allUbs;
