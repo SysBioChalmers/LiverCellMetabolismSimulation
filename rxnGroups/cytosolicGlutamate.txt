@@ -6,4 +6,4 @@ Biomass	human_proteinPool;metabolitePool;HMR_4324
 Excretion	FreeGlutamateTransport;HMR_4931
 Serine synthesis	HMR_3841
 Glutamine synthesis	HMR_3890
-Exchange Mitochondria	HMR_3829;HMR_5122;HMR_3825
+Exchange Mitochondria	HMR_3829;HMR_5122;HMR_3825;HMR_4963

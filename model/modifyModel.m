@@ -211,8 +211,8 @@ model = setParam(model, 'lb', 'HMR_5113', -1000);
 model = setParam(model, 'lb', 'HMR_5114', -1000);
 
 %Allow aspartate export from mitochondria
-lactRxn = createRXNStuct(model, 'aspartateExporter', 'aspartate[m] => aspartate[c]', 0, 1000, 'Putative Reactions');
-model=addRxns(model,lactRxn,3,'c',false);
+% lactRxn = createRXNStuct(model, 'aspartateExporter', 'aspartate[m] => aspartate[c]', 0, 1000, 'Putative Reactions');
+% model=addRxns(model,lactRxn,3,'c',false);
 
 
 %reconstruction of cysteine de sulfurase pathway:

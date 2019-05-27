@@ -23,13 +23,13 @@ BCAT->SUC	HMR_3215	1	735;760
 BCAT->ACCOA	HMR_3885;HMR_1577	2;1	790;810
 G6P->PPP	HMR_4306	-1	100;356
 SUC->MAL	HMR_4410	1	461;781
-Transport Proline	HMR_5126	1	513;350
+Transport Proline	HMR_5126;HMR_4963	1;-1	513;350
 Transport Citrate	HMR_4964	-1	814;663
 Transport Pyruvate	HMR_4926	1	300;500
 Transport Glutamine	HMR_5101	1	720;280
 Transport Alanine	HMR_5113	-1	310;350
-Transport Aspartate	aspartateExporter	1	410;350
-Transport Glutamate	HMR_3829;HMR_5122;HMR_3825	-1;1;1	1010;350
+Transport Aspartate	HMR_3829;HMR_3825	-1;1	410;350
+Transport Glutamate	HMR_3829;HMR_5122;HMR_3825;HMR_4963	-1;1;1;-1	1010;350 
 MAL-ASP	HMR_4852	-1	870;531
 Exchange Glucose	HMR_9034	-1	110;110
 Exchange Lactate	HMR_9135	1	81;660
