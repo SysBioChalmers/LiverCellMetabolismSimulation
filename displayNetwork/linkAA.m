@@ -56,9 +56,9 @@ function graph_to_dot(filename, adj, labels, rxnStart, sourceMets, sinkMets, ess
         additional = ', color = "#E0E0E0", fillcolor = "#E0E0E0"';
         
         if sourceMets(i)
-            additional = ', color = "#84C557", fillcolor = "#84C557", fontcolor = "#FFFFFF"';
+            additional = ', color = "#92CA63", fillcolor = "#92CA63", fontcolor = "#000000"';
         elseif sinkMets(i)
-            additional = ', color = "#9876A8", fillcolor = "#9876A8", fontcolor = "#FFFFFF"';    
+            additional = ', color = "#A789BD", fillcolor = "#A789BD", fontcolor = "#FFFFFF"';    
         end      
 
         additional = [additional ', style="filled,setlinewidth(0.1)"'];
