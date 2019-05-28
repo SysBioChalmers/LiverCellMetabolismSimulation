@@ -169,7 +169,12 @@ for i = 1:length(subSys)
     meanofData(i) = mean(data{i});
 end
 
-[meanofData, indx] = sort(meanofData, 1);
+meanofData = round(meanofData, 4);
+
+T = table(1./meanofData, subSys);
+[crap, indx] = sortrows(T, [1 2], 'descend');
+
+meanofData = meanofData(indx);
 data = data(indx);
 subSys = subSys(indx);
 
