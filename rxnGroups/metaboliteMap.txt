@@ -29,7 +29,7 @@ Transport Pyruvate	HMR_4926	1	300;500
 Transport Glutamine	HMR_5101	1	720;280
 Transport Alanine	HMR_5113	-1	310;350
 Transport Aspartate	HMR_3829;HMR_3825	-1;1	410;350
-Transport Glutamate	HMR_3829;HMR_5122;HMR_3825;HMR_4963	-1;1;1;-1	1010;350 
+Transport Glutamate	HMR_3829;HMR_3825;HMR_5122;HMR_4963;HMR_3864	-1;1;1;-1;1	1010;350 
 MAL-ASP	HMR_4852	-1	870;531
 Exchange Glucose	HMR_9034	-1	110;110
 Exchange Lactate	HMR_9135	1	81;660
