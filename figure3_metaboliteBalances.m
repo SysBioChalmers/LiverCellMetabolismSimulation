@@ -9,7 +9,7 @@ secColor  = [216 85 39]/256;
 epsilon = 10^-6;
 cellType = 'hepg2';
 condition = '22';
-setErrorBounds = true;
+setErrorBounds = false;
 fluxPhase = 2;
 
 if and(strcmp(cellType, 'hepg2'),  fluxPhase == 2)
