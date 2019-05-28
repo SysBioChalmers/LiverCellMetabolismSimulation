@@ -9,9 +9,10 @@ secColor  = [216 85 39]/256;
 epsilon = 10^-6;
 cellType = 'hepg2';
 condition = '22';
-setErrorBounds = false;
+setErrorBounds = true;
+fluxPhase = 2;
 
-if strcmp(cellType, 'hepg2')
+if and(strcmp(cellType, 'hepg2'),  fluxPhase == 2)
     fileName = ['confidenceIntervalls\output\hepg2-' num2str(condition) '.tsv'];
     raw = IO(fileName);
     fluxMets = raw(2:end,1);
@@ -20,7 +21,7 @@ if strcmp(cellType, 'hepg2')
     fluxError = cell2nummat(raw(2:end,3:4));
 else
     [fluxMets, fluxValues] = loadFluxes('fluxvalues', cellType, condition);
-    fluxData = fluxValues(:,2)/1000;
+    fluxData = fluxValues(:,fluxPhase)/1000;
 end
 
 model = setupBiomass(model, 48, 1);
@@ -75,8 +76,8 @@ for i = 1:length(reactionGroups)
     results(i,2) = solution.f * 1000;
 end
 
-results(results(:,2)<-1000,2) = -inf;
-results(results(:,3)>1000,3) = inf;
+results(results(:,2)<-1010,2) = -inf;
+results(results(:,3)>1010,3) = inf;
 
 
 %%
