@@ -3,23 +3,37 @@ load('model/genericHuman2')
 addpath('src')
 addpath('sensitivity analysis')
 
+epsilon = 10^-6;
+cellType = 'hepg2';
+condition = '22';
+setErrorBounds = true;
+fluxPhase = 2;
 
+if and(strcmp(cellType, 'hepg2'),  fluxPhase == 2)
+    fileName = ['confidenceIntervalls\output\hepg2-' num2str(condition) '.tsv'];
+    raw = IO(fileName);
+    fluxMets = raw(2:end,1);
+    fluxValues = cell2nummat(raw(2:end,2));
+    fluxData = fluxValues/1000;
+    fluxError = cell2nummat(raw(2:end,3:4));
+else
+    [fluxMets, fluxValues] = loadFluxes('fluxvalues', cellType, condition);
+    fluxData = fluxValues(:,fluxPhase)/1000;
+end
 
-[fluxMets, fluxValues] = loadFluxes('fluxvalues', 'hepg2-6mm-.txt');
-model = setupBiomass(model, 150, 0.5);
+model = setupBiomass(model, 48, 1);
 
-model = bindFBA(model, fluxMets, fluxValues(:,2)/1000);
+model = bindFBA(model, fluxMets, fluxData);
 solution = solveLinMin(model,1)
 
 tresh = 10^-6;
 fluxes = solution.x;
-growthTolerance = 10^-6;
 
 %Remove reactions that we are not interested in analyzing
 toAnalyse = abs(fluxes)>tresh; %only reactions with flux
 
 %fix growth rate
-model.lb(model.c==1) = (-solution.f)*(1-growthTolerance);
+model.lb(model.c==1) = (-solution.f)*(1-epsilon);
 
 %prevent byproduct formation
 [rxns, id] = getExchangeRxns(model);
