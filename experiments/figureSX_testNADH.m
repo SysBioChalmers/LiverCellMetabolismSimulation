@@ -1,5 +1,5 @@
 clc
-load('model/genericHuman2')
+load('../model/genericHuman2')
 
 results = zeros(3,2);
 
