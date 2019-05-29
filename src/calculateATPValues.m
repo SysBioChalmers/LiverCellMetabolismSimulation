@@ -119,7 +119,7 @@ function atpmin = totalATP(model, flux)
     metNames=modifyMetNames(model);
     cytATP = findIndex(metNames, 'ATP[c]');
     stochiometry = full(model.S(cytATP,:));
-    printATPBalance(model, stochiometry, flux); 
+    %printATPBalance(model, stochiometry, flux); 
     atpFlux = flux' .* stochiometry;
     atpFlux(atpFlux~=0);
     atpmin = sum(atpFlux(atpFlux>0));
