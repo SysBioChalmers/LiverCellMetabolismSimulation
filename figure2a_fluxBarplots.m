@@ -36,20 +36,20 @@ fluxProfile = [
     ];
 
 result = containers.Map();
-growthRate = zeros(length(conditions),1);
+growthRate = zeros(length(conditions),3);
 
 model = setupBiomass(model, 48, 1);
 
 for i = 1:length(conditions)
-    if strcmp(celltype{i}, 'hepG2')
+    if and(strcmp(celltype{i}, 'hepG2'), fluxProfile(i) == 2)
         fileName = ['confidenceIntervalls\output\hepg2-' num2str(conditions(i)) '.tsv'];
         raw = IO(fileName);
         fluxMets = raw(2:end,1);
         plotValues = cell2nummat(raw(2:end,2));
         plotError = cell2nummat(raw(2:end,3:4));
         overlapsZero = ((sign(plotError(:,1)).* sign(plotError(:,2)))) == -1;
-        simulateValue = plotValues/1000;
-        simulateValue(overlapsZero) = 0;
+        simulateValue = [plotValues plotError]/1000;
+        simulateValue(overlapsZero,:) = 0;
     else
         [fluxMets, fluxValues] = loadFluxes('fluxvalues', 'huh7', conditions(i));
         plotValues = fluxValues(:,fluxProfile(i));
@@ -71,17 +71,16 @@ for i = 1:length(conditions)
         tmp(4,i) = plotValues(j);
         result(fluxMetName{j}) = tmp;           
     end
-        
-    model = bindFBA(model, fluxMets, simulateValue);
-    solution = solveLin(model,1);
-    growthRate(i) = -solution.f;
     
+    %MLE
+    for j = 1:3 
+        model = bindFBA(model, fluxMets, simulateValue(:,j));
+        solution = solveLin(model,1);
+        growthRate(i,j) = -solution.f;
+    end
 end    
+
 growthData = result('biomass');
-
-
-
-
 
 
 allMets = result.keys';
@@ -143,7 +142,8 @@ exMap=exMap/255;
 secColor = [0.8500    0.3250    0.0980];
 
 xvals = makeErrorBarPlot(growthData(1,:), growthData(2,:), growthData(3,:),'growth', exMap);
-plot(xvals, growthRate, '^', 'markerfacecolor', secColor, 'markeredgecolor', secColor)
+%plot(xvals, growthRate(:,1), '^', 'markerfacecolor', secColor, 'markeredgecolor', secColor)
+errorbar(xvals, growthRate(:,1), growthRate(:,2)-growthRate(:,1), growthRate(:,3)-growthRate(:,1), [], [], '^', 'markerfacecolor', secColor, 'markeredgecolor', 'none', 'color', secColor) 
 %bar([growthRate'; zeros(1,length(growthRate))], 1, 'LineStyle','none')
 ylabel('specific growth rate 1/h')
 set(gca,'FontSize', 15, 'FontWeight', 'bold');
