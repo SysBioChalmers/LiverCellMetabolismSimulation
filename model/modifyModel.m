@@ -36,7 +36,6 @@ FA = {'myristic acid[c]'
 'oleate[c]'
 'stearate[c]'};
 
-
 for i = 1:length(molRatio)
     model = configureSMatrix(model, molRatio(i), 'ApproxPhosphatidate', FA{i});
 end
@@ -63,17 +62,17 @@ model = setParam(model, 'ub', 'HMR_5151', 0);
 
 save('genericHuman', 'model')
 
-%Blocking this reaction is required to prevent a deamination cycle in
+%The compartment of this reaction is golgi apparatus and vasicles
+%(proteinatlas.org) Blocking this reaction prevents a deamination cycle in
 %cytoplasm that shares reaction steps with glycolysis and thereby becomes
-%parsimonius. 
+%parsimonious. 
 model.ub(findIndex(model.rxns, 'HMR_4299')) = 0;
 
 %Aldo-keto reductase family 1 is downregulated 400 fold
 %Also unclear how this gene has anything to do with sulfur metabolism
 model = setParam(model, 'ub', 'HMR_4840', 0);
 
-%Not expressed in hepg2 (proteinatlas.org) and only proceds in reversed
-%direction (reactome.org)
+%Aminoadipate transporter only proceds in reverse direction (reactome.org)
 model.ub(findIndex(model.rxns, 'HMR_8022')) = 0;
 
 %Glutaminase is not cytosolic 
@@ -113,7 +112,8 @@ model = configureSMatrix(model, 0, 'HMR_4964', 'H+[c]');
 %Acts on hydroxyproline (uniprot Q9UF12)
 %model.ub(findIndex(model.rxns,'HMR_3838')) =0;
 
-%No support for this reaction in the reference (PMID 14598172)
+%No support for this reaction CIT, ISO antiporter,
+%in the reference (PMID 14598172)
 model.lb(findIndex(model.rxns,'HMR_4972')) =0;
 model.ub(findIndex(model.rxns,'HMR_4972')) =0;
 
@@ -162,12 +162,6 @@ model.ub(findIndex(model.rxns, 'HMR_1572')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_4284')) = 0;
 
 %remove undocumented transport of AKG
-model.lb(findIndex(model.rxns, 'HMR_6391')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6391')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_6330')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_6330')) = 0;
-
 model.lb(findIndex(model.rxns, 'HMR_6293')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_6293')) = 0;
 
@@ -176,9 +170,6 @@ model.ub(findIndex(model.rxns, 'HMR_6289')) = 0;
 
 model.lb(findIndex(model.rxns, 'HMR_6286')) = 0;
 model.ub(findIndex(model.rxns, 'HMR_6286')) = 0;
-
-model.lb(findIndex(model.rxns, 'HMR_4851')) = 0;
-model.ub(findIndex(model.rxns, 'HMR_4851')) = 0;
 
 %Allow reversed IDH flux in the mitochondria
 %Formally correct but creates an annoying loop
@@ -214,7 +205,6 @@ model = setParam(model, 'lb', 'HMR_5114', -1000);
 % lactRxn = createRXNStuct(model, 'aspartateExporter', 'aspartate[m] => aspartate[c]', 0, 1000, 'Putative Reactions');
 % model=addRxns(model,lactRxn,3,'c',false);
 
-
 %reconstruction of cysteine de sulfurase pathway:
 %Significantly upregulated (ENSG00000244005)
 lactRxn = createRXNStuct(model, 'cysteineDesulfurase', 'cysteine[c] + GSH[c] => S-Sulfanylglutathione[c] + alanine[c]', 0, 1000, 'Sulfur metabolism');
@@ -226,7 +216,6 @@ model=addRxns(model,lactRxn,3,'c',false);
 
 %Make the cell specific knock outs
 model = hepG2Constrain(model);
-
 
 %Manual curation of HEPG2 specific expression
 %Probably no expression of Interleukin 4 induced 1, also unclear if
