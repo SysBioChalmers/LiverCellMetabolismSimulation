@@ -23,8 +23,8 @@ for i = 1:length(geneList)
     errorbar(k, mean(tot1), std(tot1), 'k')
     errorbar(k+1, mean(tot2), std(tot2), 'k')
 
-    [h p] = ttest2(tot1,tot2);
-    [p,h] = ranksum(tot1,tot2)
+    [h, p, ci, stats] = ttest2(tot1,tot2);
+
     text(k, highVal, sprintf('p=%2.2e',p));
     
     maxValue = max(maxValue, highVal);
