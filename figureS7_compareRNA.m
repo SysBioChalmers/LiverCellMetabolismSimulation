@@ -19,6 +19,9 @@ geneList{2} = {'ENSG00000116761'}; %CTH
 geneList{3} = {'ENSG00000244005'}; %NFS1
 geneList{4} = {'ENSG00000105755'}; %ETHE1
 geneList{5} = {'ENSG00000060982', 'ENSG00000105552'}; %BCAT 1 and 2
+geneList{6} = {'ENSG00000167701', 'ENSG00000166123'}; %ALT 1 and 2
+geneList{7} = {'ENSG00000118520', 'ENSG00000081181'}; %ARG 1 and 2
+
 
 
 nRows = ceil(length(geneList)/2);
