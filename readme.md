@@ -38,6 +38,7 @@ This repository is administered by name @avlant, Division of Systems and Synthet
 * *_PROGRAMMING LANGUAGE/Version_*  (e.g.):
   * You need a functional Matlab installation of **Matlab_R_2015_b** (MATLAB 7.3 and higher)
   * The [RAVEN](https://github.com/SysBioChalmers/RAVEN) toolbox for MATLAB. Add the directory to your Matlab path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
+  * Optional for graphviz plots (e.g figure 2C). Python 3 with the graphviz package.
 
 ### Run
 To reproduce the figures of the paper run corresponding files (e.g. figure1a.m for figure 1A)
