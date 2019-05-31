@@ -1,0 +1,1 @@
+run('confidenceIntervalls/MLEFitIndependent.m')
