@@ -64,7 +64,7 @@ addpath('additionalSamples/src')
 if showVitamins
     figure()
     dict = {'choline[s]', 'pantothenate[s]', 'folate[s]', 'nicotinamide[s]',  'riboflavin[s]', '5-oxoproline[s]'};
-    dict = {'choline[s]', 'pantothenate[s]', 'nicotinamide[s]', '5-oxoproline[s]'};
+    dict = {'choline[s]', 'pantothenate[s]', 'nicotinamide[s]', '5-oxoproline[s]', 'NH3[s]'};
 
     numberOfCols = length(dict);
     plotResults(t, y, yconc, breakPoints, mu, expData, growthdat, dict, numberOfCols)
