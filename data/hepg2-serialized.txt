@@ -560,3 +560,6 @@ Folate	0	22	DMEM+FBS	9.1
 Riboflavin	0	22	DMEM+FBS	1.1
 Sulfate	0	22	DMEM+FBS	814
 Proline	0	22	DMEM+FBS	22.6
+Amonia	0	0	DMEM+FBS	0
+Amonia	0	6	DMEM+FBS	0
+Amonia	0	22	DMEM+FBS	0
