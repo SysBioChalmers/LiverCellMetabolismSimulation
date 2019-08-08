@@ -84,14 +84,21 @@ end
 
 %%
 hold all
-for i = 1:size(ATPrate,2)
+area(xvals, GAM*xvals + NGAM, 'HandleVisibility', 'off', 'LineStyle', 'none', 'FaceColor', [0.8 0.8 0.8])
+plot(growthRate, ATPrate(:,1), 'ko-', 'MarkerFaceColor', 'black')
+
+for i = 2:size(ATPrate,2)
     scatter(growthRate, ATPrate(:,i), 'fill')
 end
 xlim([0 0.04])
 ylim([0 8])
 
 xvals = [0 0.04];
-plot(xvals, GAM*xvals + NGAM, 'k--')
-legend({'ref', 'low lactate', 'high lactate', 'low glucose', 'high glucose'}, 'location', 'nw')
-    
+xlabel('Specific growth rate [1/h]')
+ylabel('ATP synthesis capacity [mmol ATP/gdw/h]')
+
+legend({'MLE', 'lb lactate', 'ub lactate', 'lb glucose', 'ub glucose'}, 'location', 'nw')
+legend boxoff    
+
+text(growthRate, ATPrate(:,1), {'0 mM', '6 mM', '22 mM'})
 
