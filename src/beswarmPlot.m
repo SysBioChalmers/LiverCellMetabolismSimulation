@@ -4,7 +4,7 @@ function cordinates = beswarmPlot(data, radius)
     
     for i = 1:length(data)
         cordinates{i} = plotColumn(i, data{i}, radius);
-        scatter(data{i}, cordinates{i}, 'filled', 'MarkerEdgeColor', color, 'MarkerFaceColor', color, 'MarkerFaceAlpha',.2);
+        scatter(cordinates{i}, data{i}, 'filled', 'MarkerEdgeColor', color, 'MarkerFaceColor', color, 'MarkerFaceAlpha',.5);
         
         %scatter(data{i}, cordinates{i}, 'MarkerEdgeColor',color);
     end

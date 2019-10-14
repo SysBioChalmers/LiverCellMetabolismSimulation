@@ -23,12 +23,12 @@ model = setupBiomass(model, 48, 1);
 model = bindFBA(model, fluxMets, fluxData);
 
 %%%%%%%%%%%%%%%%%%%%
-%Relax upper bound for uptake reactions to allow sub maximal flux which may
-%be required to prevent linear pathways from beeing infeasible
+%Relax upper bound for uptake reactions to allow sub maximal flux which is
+%required to prevent linear pathways from beeing infeasible
 [rxn, id] = getExchangeRxns(model);
 for i = 1:length(id)
     if model.lb(id(i)) < 0
-        model.ub(id(i)) = 1000;
+        model.ub(id(i)) = 0;
     end
 end
 
@@ -172,7 +172,7 @@ end
 meanofData = round(meanofData, 4);
 
 T = table(1./meanofData, subSys);
-[crap, indx] = sortrows(T, [1 2], 'descend');
+[crap, indx] = sortrows(T, [1 2], 'ascend');
 
 meanofData = meanofData(indx);
 data = data(indx);
@@ -186,23 +186,27 @@ countSensitive = 0;
 countTotal = 0;
 tresh = 0.5;
 
+plot([0 length(meanofData)+1], [1 1], 'k-')
+
+plot([0 length(meanofData)+1], tresh * [1 1], 'k-')
+
 for i = 1:length(meanofData)
-    barh(i, meanofData(i), 'FaceColor', color,'LineStyle','none');
+    bar(i, meanofData(i), 'FaceColor', color,'LineStyle','none');
     nrOfRxns = num2str(length(data{i}));
     subSysLabel{i} = [subSysLabel{i} ' (' nrOfRxns ')'];
     countSensitive = countSensitive + sum(data{i}>tresh);
     countTotal = countTotal + length(data{i});
 end
 
-yticks(1:length(meanofData))
-yticklabels(subSysLabel)
+xticks(1:length(meanofData))
+xticklabels(subSysLabel)
 
 cordinates = beswarmPlot(data, 0.05);
-xlabel('sensitivity')
-xlim([0 1.05])
-plot([1 1], [0 length(meanofData)+1], 'k-')
+ylabel('sensitivity')
+ylim([0 1.05])
 
-plot(tresh * [1 1], [0 length(meanofData)+1], 'k-')
+
+xtickangle(30)
 
 countSensitive
 countTotal
