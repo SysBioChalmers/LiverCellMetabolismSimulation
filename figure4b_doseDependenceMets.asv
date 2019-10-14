@@ -173,10 +173,5 @@ for i = 1:length(allI)
     text(2, tmp(2)/3, sprintf('p = %2.2e', coef(4)))
     title(includeMets{curCondition})
 end
-FDR = mafdr(result(:,4));
-
-for i = 1:length(allI)
-    fprintf('%s\t%2.2e\n', includeMets{allI(i)}, FDR(allI(i)))
-end
-
+FDR = mafdr(result(:,4))
 
