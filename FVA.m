@@ -9,6 +9,8 @@ condition = '22';
 setErrorBounds = true;
 fluxPhase = 2;
 
+constrainedFVA = true;
+
 if and(strcmp(cellType, 'hepg2'),  fluxPhase == 2)
     fileName = ['confidenceIntervalls\output\hepg2-' num2str(condition) '.tsv'];
     raw = IO(fileName);
@@ -32,14 +34,15 @@ fluxes = solution.x;
 %Remove reactions that we are not interested in analyzing
 toAnalyse = abs(fluxes)>tresh; %only reactions with flux
 
-%fix growth rate
-model.lb(model.c==1) = (-solution.f)*(1-epsilon);
+if constrainedFVA
+    %fix growth rate
+    model.lb(model.c==1) = (-solution.f)*(1-epsilon);
 
-%prevent byproduct formation
-[rxns, id] = getExchangeRxns(model);
-id(abs(fluxes(id))>tresh) = [];
-model.ub(id) = 0;
-
+    %prevent byproduct formation
+    [rxns, id] = getExchangeRxns(model);
+    id(abs(fluxes(id))>tresh) = [];
+    model.ub(id) = 0;
+end
 
 %%%%%%%%%%
 %Make structure to store results:
