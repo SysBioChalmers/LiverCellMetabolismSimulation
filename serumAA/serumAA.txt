@@ -1,0 +1,21 @@
+L-Alanine	319.4	71.7
+L-Arginine	81.4	19.3
+L-Asparagine	48.4	9.29
+L-Aspartic acid	6.26	2.34
+L-Citrulline	29.8	7.91
+L-Glutamine	657.9	106.2
+L-Glutamic acid	46.2	21.4
+Glycine	255.4	65.9
+L-Histidine	89.3	10.8
+L-Isoleucine	77.5	15.4
+L-Leucine	150.1	27.7
+L-Lysine	197.4	30.7
+L-Methionine	25.4	5.05
+L-Ornithine	69	18
+L-Phenylalanine	60	7.75
+L-Proline	188.3	55
+L-Serine	115.1	25
+L-Threonine	127.9	28.2
+L-Tryptophan	63	10.7
+L-Tyrosine	62.9	12.2
+L-Valine	243.6	45.2
