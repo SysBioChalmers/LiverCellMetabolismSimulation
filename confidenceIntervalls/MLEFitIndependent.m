@@ -1,6 +1,8 @@
 clc
 close all
 addpath('src')
+addpath('../src')
+
 condition = '22';
 %confidencebound = 0.341 * 2; %1 std
 confidencebound = 0.95; %2 std
