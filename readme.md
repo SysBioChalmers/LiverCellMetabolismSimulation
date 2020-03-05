@@ -18,7 +18,7 @@ Many cancer cells consume glutamine at high rates; counterintuitively, they simu
 
 
 
-This repository is administered by name @avlant, Division of Systems and Synthetic Biology, Department of Biology and Biological Engineering, Chalmers University of Technology
+This repository is administered by @avlant, Division of Systems and Synthetic Biology, Department of Biology and Biological Engineering, Chalmers University of Technology
 
 
 ## Installation
