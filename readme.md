@@ -3,27 +3,17 @@
 - Models and scripts for simulations of growth of HepG2 cells.
 
 - Abstract:
-Altered amino acid metabolism is an emerging characteristic of cancer. We measured 
-the exchange fluxes of two liver cancer cell lines (HepG2 and Huh7) under different
-nutrient conditions. The amino acids glutamate, cysteine, arginine, phenylalanine
-and the branched chain amino acids (BCAA) were consumed at rates exceeding the 
-requirement for protein synthesis, whilst alanine and glutamate were excreted. We
-investigated the intracellular fluxes using a genome scale metabolic model, and 
-found that mitochondrial glutamate is consumed whilst cytosolic glutamate is
-excreted. Cytoplasmic glutamate originates primarily from deamination of BCAA and
-transamination of glutamine for biosynthesis of nucleotides. We find that inhibiting
-the glutamate transporter reduces growth of liver cancer cells. Based on our analysis
-we discuss a number of other potential drug targets.
+Many cancer cells consume glutamine at high rates; counterintuitively, they simultaneously excrete glutamate, the first intermediate in glutamine metabolism. Glutamine consumption has been linked to replenishment of TCA intermediates and synthesis of ATP, but the reason for glutamate excretion is unclear. Here we dynamically profile the uptake and excretion fluxes of a liver cancer cell line (HepG2) and use genome-scale metabolic modeling for in-depth analysis. We find that up to 30% of the glutamine is metabolized in the cytosol, primarily for nucleotide synthesis, producing cytosolic glutamate. We hypothesize that excreting glutamate helps the cell to increase the nucleotide synthesis rate to sustain growth. Indeed, we show experimentally that partial inhibition of glutamate excretion reduces cell growth. Our integrative approach thus links glutamine addiction to glutamate excretion in cancer and points towards potential drug targets.
 
 - KeyWords:
 
-**Utilisation:** maximising growth, predictive simulation, experimental data integration; **Model Source:** HMR2.00; **Taxonomy:** Homo sapiens  **Condition:** HepG2/Huh7 different glucose concentrations 
+**Utilisation:** maximising growth, predictive simulation, experimental data integration; **Model Source:** HMR2.00; **Taxonomy:** Homo sapiens  **Condition:** HepG2 different glucose concentrations 
 
 - Reference: Manuscript
 
 - Pubmed ID: NaN
 
-- Last update: 2018-09-27
+- Last update: 2020-03-05
 
 
 
